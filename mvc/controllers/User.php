@@ -20,22 +20,20 @@ class User extends Controller {
 
     }
     //return Home from other pages 
-   static function Home($username){   
-       
-        $kq = $this->MemberModel->CurrentMember($username);
-        //var_dump($kq);
+    function Home($username){
+        // $kq = $this->MemberModel->CurrentMember($username);
         $song = $this->MusicModel->ourSong();
         $noise = $this->MusicModel->whiteNoise();
         $this->view("masterHome", [
             "page"=>"user",
-            "result"=>$kq,
+            // "result"=>$kq,
             "song"=>$song,
             "noise"=>$noise
         ]);
 
     }
     
-    //--------------------DIARY-----------------------------
+    //-------------------------------------------DIARY-------------------------------------------
 
     //insert diary
     function Diary($songId, $userId){
@@ -55,7 +53,7 @@ class User extends Controller {
             "alllog" =>$all,
             "logperpage"=>$logPerPage,
             "currentpage"=>$page,
-            "username"=>$username
+            // "username"=>$username
         ]);
     }
     //xóa diary
@@ -85,7 +83,7 @@ class User extends Controller {
                     "logperpage"=>$logPerPage,
                     "currentpage"=>$page,
                     "result" => $result,
-                    "username"=>$username
+                    // "username"=>$username
                 ]);
             }
             else{
@@ -97,22 +95,21 @@ class User extends Controller {
                     "alllog" =>$kq,
                     "logperpage"=>$logPerPage,
                     "currentpage"=>$page,
-                    "username"=>$username
+                    // "username"=>$username
                 ]);
             }
             
         }
     }
 
-    /////////////  SETTING INFO //////////////////////
-
+    //-------------------------------------  SETTING INFO -----------------------------------------------------
     function Profile($username){
         // get data 
         $kq = $this->MemberModel->CurrentMember($username);
         $this->view("masterHome", [
             "page" => "settinguser",
             "profile"=>$kq,
-            "username"=>$username
+            // "username"=>$username
         ]);
     }
     function Password($username){
@@ -121,10 +118,10 @@ class User extends Controller {
         $this->view("masterHome", [
             "page" => "settingpass",
             "profile"=>$kq,
-            "username"=>$username
+            // "username"=>$username
             ]);
     }
-    public function UpdateInfo($username){   
+    function UpdateInfo($username){   
         if(isset($_POST['submit'])){
             $username = $_POST["username"];           
             $fullname = $_POST["fullname"];           
@@ -136,7 +133,7 @@ class User extends Controller {
                 "page" => "settinguser",
                 "result" => $kq,
                 "profile" => $profile,
-                "username"=>$username
+                // "username"=>$username
             ]);
         }
     }
@@ -154,13 +151,11 @@ class User extends Controller {
                     "page"=>"settingpass",
                     "result" => $kq,
                     "profile" => $profile,
-                    "username"=>$username
+                    // "username"=>$username
                 ]);
             }
             
-        }
-        
-
+        }    
     }
     public function SearchMusicPlay($username){
             

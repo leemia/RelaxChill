@@ -58,8 +58,6 @@ class MusicModel extends DB{
         return mysqli_query($this->con, $sql);
     }
 
-    
-    // chưa có insert ở đâyđợi t tí nó lag quá ok
     //add music
     public function InsertNewMusic($songtitle, $songlink, $idtype, $listens){
         $sql = "INSERT INTO music VALUES (null, '$songtitle', '$songlink', '$idtype','$listens')";

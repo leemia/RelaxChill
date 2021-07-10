@@ -1,13 +1,16 @@
 <?php 
+ if(!isset($_SESSION['login'])){
+    header("location:http://localhost/RelaxChill/Login");
+}
 //lấy username
- $username = $data["username"];
+$username = $_SESSION['login']["username"];
  if(isset($data["alllog"])) {
     $row = mysqli_fetch_assoc($data["alllog"]);
 }
 if(isset($data["currentpage"])){
     $currentPage = $data["currentpage"];
 }
-// echo $username;
+// echo $_SESSION['login']["username"];;
 ?>
 <link href='public/admin/DataTables/datatables.min.css?v=1' rel='stylesheet' type='text/css'>
 <link href='public/css/table.css' rel='stylesheet' type='text/css'>
@@ -20,20 +23,17 @@ if(isset($data["currentpage"])){
             <i class="fas fa-bars"></i>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-                <?php ?>
+            <ul class="topmenu navbar-nav ml-auto" style="font-family: 'Nanum Gothic', sans-serif;">
                 <li class="nav-item mx-0 mx-lg-1">
-                    <div class="dropdown">
-                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger btndd"><?php echo $username;?></a>
-                        <div class="dropdown-content">
-                            <a href="./User/Profile/<?php echo $username;?>">Profile</a>
-                            <a href="./User/LoadDiary/<?php echo $username; ?>/10/1">Diary</a>
-                            <a href="logout.php">Logout</a>
-                        </div>
+                <div class="dropdown">
+                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger btndd"><?php echo $username; ?></a>
+                    <div class="dropdown-content">
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="./Login/logout">Logout</a>
                     </div>
+                </div>      
                 </li>
-                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#about">About</a></li>
-                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#donate">Donate</a></li>
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="./User/Profile/<?php echo $username; ?>">Profile</a></li>
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="./User/LoadDiary/<?php echo $username; ?>/10/1">Diary</a></li>
                 <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="User/Home/<?php echo $username; ?>">Back</a></li>
             </ul>
         </div>
@@ -134,19 +134,19 @@ if(isset($data["currentpage"])){
                 // nếu current_page > 1 và total_page > 1 mới hiển thị nút prev
                 if($totalPages > 1){
                     if ($currentPage > 1){
-                        echo '<a class = "button" style="margin:0 5px;text-decoration:none;" href = "User/LoadDiary/'.$userID.'/'.$logPerPage.'/'.($currentPage-1).'">Previous</a>'; 
+                        echo '<a class = "button" style="margin:0 5px;text-decoration:none;border:none" href = "User/LoadDiary/'. $username.'/'.$logPerPage.'/'.($currentPage-1).'"><i style="color:#D0B28B" class="fas fa-backward"></i></a>'; 
                     }
                     for($i=1; $i<=$totalPages; $i++){
                         if ($i == $currentPage){
                             echo '<button style="border:none">'.$i.'</button>  ';
                         }
                         else{
-                            echo '<a  class = "button" style="margin:0 5px;text-decoration:none;" href = "User/LoadDiary/'.$userID.'/'.$logPerPage.'/'.$i.'">'.$i .'</a>'; 
+                            echo '<a  class = "button" style="margin:0 5px;text-decoration:none;border:none" href = "User/LoadDiary/'. $username.'/'.$logPerPage.'/'.$i.'">'.$i .'</a>'; 
                         }
                     }
                     // nếu current_page < $total_page và total_page > 1 mới hiển thị nút next
                     if ($currentPage < $totalPages){
-                        echo '<a class = "button" style="margin:0 5px;text-decoration:none;" href = "User/LoadDiary/'.$userID.'/'.$logPerPage.'/'.($currentPage+1).'">Next</a>'; 
+                        echo '<a class = "button" style="margin:0 5px;text-decoration:none;border:none" href = "User/LoadDiary/'. $username.'/'.$logPerPage.'/'.($currentPage+1).'"><i style="color:#D0B28B" class="fas fa-forward"></i></a>'; 
                     }
                 }
                 

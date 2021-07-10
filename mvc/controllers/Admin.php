@@ -7,12 +7,12 @@ class Admin extends Controller{
         $this->MemberModel = $this->model("MemberModel");
         $this->MusicModel = $this->model("MusicModel");
     }
-    public static function SayHi(){
+    public function SayHi(){
         $this->view("masterAdmin", [
             "page"=>"adminhome"
         ]);
     }
-    //MANAGE MEMBER
+    //---------------------------------------------- MANAGE MEMBER----------------------------------------------
    public function MemberManage($memPerPage, $page){
        //mặc định trang 1, mỗi trang có 5 thành viên
         $this->view("masterAdmin", [
@@ -58,8 +58,8 @@ class Admin extends Controller{
         }
     }
 
-    //MANAGE MUSIC
-     // MUSIC
+    //----------------------------------------------MANAGE MUSIC----------------------------------------------
+
      public function MusicManage($musicPerPage, $page)
      {
         $this->view("masterAdmin", [
@@ -108,7 +108,7 @@ class Admin extends Controller{
         }
     }
 
-    //ACTION
+    //--------------------------------------- ACTION MUSIC ----------------------------------------------
     public function Insert()
     {
         $this->view("masterHome", [
@@ -126,7 +126,7 @@ class Admin extends Controller{
             // echo $songtitle;
         }
         $kq = $this->MusicModel->InsertNewMusic($songtitle, $songlink, $idtype, $listens);
-        // echo $kq;
+        // var_dump($kq);
         $this->view("masterHome", [
             "page" => "insert",
             "result" => $kq

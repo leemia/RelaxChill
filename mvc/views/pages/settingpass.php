@@ -1,5 +1,8 @@
 <?php
-$username = $data["username"];
+ if(!isset($_SESSION['login'])){
+    header("location:http://localhost/RelaxChill/Login");
+}
+$username = $_SESSION['login']["username"];
 $user = [];
 if (isset($data["profile"])) {
     $user = json_decode($data["profile"], true);
@@ -12,7 +15,7 @@ if (isset($data["profile"])) {
 <html lang="en">
 
 <head>
-    <base href="http://localhost:80/demo/">
+    <base href="http://localhost/RelaxChill/">
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -45,21 +48,19 @@ if (isset($data["profile"])) {
                 <i class="fas fa-bars"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item mx-0 mx-lg-1">
-                        <div class="dropdown">
-                            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger btndd"><?php echo $username; ?></a>
-                            <div class="dropdown-content">
-                                <a href="./User/Profile/<?php echo $username; ?>">Profile</a>
-                                <a href="./User/LoadDiary/<?php echo $username; ?>/10/1">Diary</a>
-                                <a href="logout.php">Logout</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#about">About</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#donate">Donate</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="User/Home/<?php echo $username; ?>">Back</a></li>
-                </ul>
+            <ul class="topmenu navbar-nav ml-auto" style="font-family: 'Nanum Gothic', sans-serif;">
+                <li class="nav-item mx-0 mx-lg-1">
+                <div class="dropdown">
+                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger btndd"><?php echo $_SESSION['login']["username"];;?></a>
+                    <div class="dropdown-content">
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="./Login/logout">Logout</a>
+                    </div>
+                </div>      
+                </li>
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="./User/Profile/<?php echo $_SESSION['login']["username"];;?>">Profile</a></li>
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="./User/LoadDiary/<?php echo $_SESSION['login']["username"];;?>/10/1">Diary</a></li>
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="User/Home/<?php echo $_SESSION['login']["username"];; ?>">Back</a></li>
+            </ul>
             </div>
         </div>
     </nav>
@@ -115,8 +116,8 @@ if (isset($data["profile"])) {
                                     <div class="tab-pane fade active show">
                                         <hr class="border-light m-0">
                                         <!-- content -->
-                                        <form method="POST" class="form-horizontal" action="User/ChangePassword/<?php echo $username; ?>" role="form">
-                                        <form action="User/UpdateInfo/<?php echo $username; ?>" method="POST">
+                                        <form method="POST" class="form-horizontal" action="User/ChangePassword/<?php echo $_SESSION['login']["username"];; ?>" role="form">
+                                        <form action="User/UpdateInfo/<?php echo $_SESSION['login']["username"];; ?>" method="POST">
                                             <?php if (isset($data["result"])) { ?>
                                                 <h4 style="text-align: left; text-align: center">
                                                     <?php
@@ -136,25 +137,25 @@ if (isset($data["profile"])) {
                                             </div>
                                             <div class="form-group">
                                                 <label class="form-label">Current password</label>
-                                                <input type="password" placeholder="Enter your current password..." name="oldpass" class="form-control">
+                                                <input type="password" placeholder="Enter your current password..." name="oldpass" class="form-control" required>
                                             </div>
 
                                             <div class="form-group">
                                                 <label class="form-label">New password</label>
-                                                <input type="password" id="myInput" placeholder="Enter your new password..." name="newpass" class="form-control">
+                                                <input type="password" id="myInput" placeholder="Enter your new password..." name="newpass" class="form-control" required>
                                             </div>
 
                                             <div class="form-group">
                                                 <label class="form-label">Confirm new password</label>
-                                                <input type="password" placeholder="Confirm your new password..." name="confirm" class="form-control">
+                                                <input type="password" placeholder="Confirm your new password..." name="confirm" class="form-control" required>
                                             </div>
 
                                             <input type="checkbox" onclick="myFunction()"> Show Password
 
                                             <div class="text-right mt-3">
-                                                <a href="./User/Profile/<?php echo $username; ?>" class="btn btn-warning" >&laquo; General</a>
+                                                <a href="./User/Profile/<?php echo $_SESSION['login']["username"];; ?>" class="btn btn-warning" >&laquo; General</a>
                                                 <button name="submit_pass" type="submit" class="btn btn-success">UPDATE</button>
-                                                <a href="./User/Password/<?php echo $username; ?>" class="btn btn-danger">CANCEL</a> 
+                                                <a href="./User/Password/<?php echo $_SESSION['login']["username"];; ?>" class="btn btn-danger">CANCEL</a> 
                                             </div>
 
                                             </div>

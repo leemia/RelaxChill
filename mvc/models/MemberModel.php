@@ -86,8 +86,9 @@ class MemberModel extends DB{
              //nếu pass đã mã hóa thì xài hàm password_verify($data['pass'], $Password) để giải mã
             if($Password == $data['pass']){
                 //lưu vào session
-
-                // $_SESSION['user'] = $data;
+                // session_start();
+                // $_SESSION['login'] = $data;
+                // return $_SESSION['login'];
                 return json_encode($data);
             }
             else {
