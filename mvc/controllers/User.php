@@ -20,7 +20,7 @@ class User extends Controller {
 
     }
     //return Home from other pages 
-   static function Home($username){
+    function Home($username){
         $kq = $this->MemberModel->CurrentMember($username);
         $song = $this->MusicModel->ourSong();
         $noise = $this->MusicModel->whiteNoise();
@@ -103,7 +103,6 @@ class User extends Controller {
     }
 
     /////////////  SETTING INFO //////////////////////
-
     function Profile($username){
         // get data 
         $kq = $this->MemberModel->CurrentMember($username);
@@ -149,7 +148,7 @@ class User extends Controller {
                 $kq = $this->MemberModel->ChangePassword($username, $oldpass, $newpass);
                 $profile = $this->MemberModel->CurrentMember($username);
                 $this->view("masterHome", [
-                    "page"=>"settingpass",
+                    "page"=>"settinguser",
                     "result" => $kq,
                     "profile" => $profile,
                     "username"=>$username
