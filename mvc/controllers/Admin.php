@@ -7,7 +7,7 @@ class Admin extends Controller{
         $this->MemberModel = $this->model("MemberModel");
         $this->MusicModel = $this->model("MusicModel");
     }
-    public function SayHi(){
+    public static function SayHi(){
         $this->view("masterAdmin", [
             "page"=>"adminhome"
         ]);

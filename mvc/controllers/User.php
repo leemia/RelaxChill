@@ -1,5 +1,5 @@
 <?php
-class User extends Controller{
+class User extends Controller {
 
     public $MusicModel;
     public $MemberModel;
@@ -20,7 +20,7 @@ class User extends Controller{
 
     }
     //return Home from other pages 
-    function Home($username){
+   static function Home($username){
         $kq = $this->MemberModel->CurrentMember($username);
         $song = $this->MusicModel->ourSong();
         $noise = $this->MusicModel->whiteNoise();
@@ -32,6 +32,9 @@ class User extends Controller{
         ]);
 
     }
+    
+    //--------------------DIARY-----------------------------
+
     //insert diary
     function Diary($songId, $userId){
         if(isset($songId) and isset($userId)){
@@ -110,10 +113,13 @@ class User extends Controller{
             "username"=>$username
         ]);
     }
-    function Password(){
+    function Password($username){
         // get data 
+        $kq = $this->MemberModel->CurrentMember($username);
         $this->view("masterHome", [
-            "page" => "changepass",
+            "page" => "settingpass",
+            "profile"=>$kq,
+            "username"=>$username
             ]);
     }
     public function UpdateInfo($username){   
@@ -143,7 +149,7 @@ class User extends Controller{
                 $kq = $this->MemberModel->ChangePassword($username, $oldpass, $newpass);
                 $profile = $this->MemberModel->CurrentMember($username);
                 $this->view("masterHome", [
-                    "page"=>"settinguser",
+                    "page"=>"settingpass",
                     "result" => $kq,
                     "profile" => $profile,
                     "username"=>$username

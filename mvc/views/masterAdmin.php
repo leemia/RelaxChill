@@ -2,7 +2,11 @@
 <html lang="en">
 
 <head>
+<<<<<<< HEAD
     <base href="http://localhost:8080/demo/" />
+=======
+    <base href="http://localhost:80/demo/" />
+>>>>>>> 88085dfc04a7357ee06a1ed16b159ea5c49e875f
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
