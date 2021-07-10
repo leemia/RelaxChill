@@ -18,77 +18,8 @@ require_once './mvc/controllers/User.php';
                 "page"=>"login",
             ]);
         }
-        //LOGIN
-        public function DangNhap(){
-            // get data nguoi nhap
-            if (isset($_POST["btnLogin"]) ){
-                $Username = $_POST["username"];
-                $Password = $_POST["pass"];
-                //$Password = password_hash($Password, PASSWORD_DEFAULT);
-                $kq=$this->MemberModel->CheckMember($Username, $Password);
-                // var_dump ($kq);
-                 //show result
-                if($kq == '1' || $kq == '2'){
-                    $this->view("masterHome" ,[
-                        "page"=>"login",
-                        "result"=>$kq
-                    ]);
-                }
-                //sau khi đúng acc nếu username = admin thì qua admin
-                else{
-                   
-                    $arr = json_decode($kq,true);
-                    // var_dump($arr);
-                    $_SESSION['login'] = $arr;
-                    if($_SESSION['login']['username'] == 'admin'){
-                        $this->admin = new Admin;
-                        $this->admin->SayHi();
-                        // Admin/SayHi
-                    }
-                    else{
-                        // User::Home($Username);
-                        $this->user = new User;
-                        $this->user->Home($_SESSION['login']['username']);
-                    }
-                    
-                }
-            }
-  
-        }
-        /**
-         * logout
-         */
-        function logout(){
-            //hủy session theo tên
-            unset($_SESSION['login']);
-            //xóa hết tất cả các session
-            session_destroy();
-            header('location: http://localhost:81/RelaxChill/Home');
-        }
-        //FORGOT PASSWORD
-        public function ForgotPassword(){
-            $this->view("masterHome", [
-                "page"=>"forgot",
-            ]);
-        }
-        public function Reset(){
-            // get data nguoi nhap
-            if (isset($_POST["btnReset"]) ){
-                $username = $_POST["username"];
-                $email = $_POST['email'];
-                $kq=$this->MemberModel->CheckMail($username, $email);
-                // var_dump ($kq);
-                 //show result
-                 $this->view("masterHome", [
-                            "page"=>"forgot",
-                            "result"=>$kq
-                        ]);
-                
-            }
-
-        }
-
-        //REGISTER
+        
+        //--------------------------------------- REGISTER ------------------------------------------
         public function Register(){
             $this->view("masterHome", [
                 "page"=>"register",
@@ -105,7 +36,8 @@ require_once './mvc/controllers/User.php';
                 // insert database by users
                 $kq = $this->MemberModel->InsertNewUser($username, $pass, $fullname, $email);
                 // echo $kq; 
-                //Kiểm tra đăng nhập thành công/thất bại (true/false)
+                // Kiểm tra đăng nhập thành công/thất bại (true/false)
+
                 //show result
                 $this->view("masterHome" ,[
                     "page"=>"register",
@@ -114,6 +46,69 @@ require_once './mvc/controllers/User.php';
                
             }
             
+        }
+        //---------------------------------------LOGIN ------------------------------------------
+        public function DangNhap(){
+            // get data nguoi nhap
+            if (isset($_POST["btnLogin"]) ){
+                $Username = $_POST["username"];
+                $Password = $_POST["pass"];
+                $kq=$this->MemberModel->CheckMember($Username, $Password);
+                // var_dump ($kq);
+                 //show result
+                if($kq == '1' || $kq == '2'){
+                    $this->view("masterHome" ,[
+                        "page"=>"login",
+                        "result"=>$kq
+                    ]);
+                }
+                //sau khi đúng acc nếu username = admin thì qua admin
+                else{  
+                    $arr = json_decode($kq,true);
+                    // var_dump($arr);
+                    $_SESSION['login'] = $arr;
+                    if($_SESSION['login']['username'] == 'admin'){
+                        // $admin = new Admin();
+                        // $admin->SayHi();
+                        $this->admin = new Admin;
+                        $this->admin->SayHi();
+                        // Admin/SayHi
+                    }
+                    else{
+                        // User::Home($Username);
+                        $this->user = new User;
+                        $this->user->Home($_SESSION['login']['username']);
+                    }                   
+                }
+            }
+        }
+         //--------------------------------------- FORGOT PASSWORD ------------------------------------------
+         public function ForgotPassword(){
+            $this->view("masterHome", [
+                "page"=>"forgot",
+            ]);
+        }
+        public function Reset(){
+            // get data nguoi nhap
+            if (isset($_POST["btnReset"]) ){
+                $username = $_POST["username"];
+                $email = $_POST['email'];
+                $kq=$this->MemberModel->CheckMail($username, $email);
+                // var_dump ($kq);
+                 //show result
+                 $this->view("masterHome", [
+                            "page"=>"forgot",
+                            "result"=>$kq
+                        ]);               
+            }
+        }
+        //--------------------------------------- LOGOUT ------------------------------------------
+         function logout(){
+            //hủy session theo tên
+            unset($_SESSION['login']);
+            //xóa hết tất cả các session
+            session_destroy();
+            header('location: http://localhost/RelaxChill/Home');
         }
 
 

@@ -1,6 +1,6 @@
 <?php 
  if(!isset($_SESSION['login'])){
-    header("location:http://localhost:81/RelaxChill/Login");
+    header("location:http://localhost/RelaxChill/Login");
 }
 //lấy username
 $username = $_SESSION['login']["username"];
@@ -10,6 +10,7 @@ $username = $_SESSION['login']["username"];
 if(isset($data["currentpage"])){
     $currentPage = $data["currentpage"];
 }
+// echo $_SESSION['login']["username"];;
 ?>
 <link href='public/admin/DataTables/datatables.min.css?v=1' rel='stylesheet' type='text/css'>
 <link href='public/css/table.css' rel='stylesheet' type='text/css'>

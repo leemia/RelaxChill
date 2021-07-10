@@ -33,7 +33,7 @@ class User extends Controller {
 
     }
     
-    //--------------------DIARY-----------------------------
+    //-------------------------------------------DIARY-------------------------------------------
 
     //insert diary
     function Diary($songId, $userId){
@@ -52,7 +52,8 @@ class User extends Controller {
             "limitlog"=>$limitlog,
             "alllog" =>$all,
             "logperpage"=>$logPerPage,
-            "currentpage"=>$page
+            "currentpage"=>$page,
+            // "username"=>$username
         ]);
     }
     //xóa diary
@@ -81,7 +82,8 @@ class User extends Controller {
                     "page"=>"diary",
                     "logperpage"=>$logPerPage,
                     "currentpage"=>$page,
-                    "result" => $result
+                    "result" => $result,
+                    // "username"=>$username
                 ]);
             }
             else{
@@ -92,34 +94,46 @@ class User extends Controller {
                     "limitlog"=>$limitlog,
                     "alllog" =>$kq,
                     "logperpage"=>$logPerPage,
-                    "currentpage"=>$page
+                    "currentpage"=>$page,
+                    // "username"=>$username
                 ]);
             }
             
         }
     }
 
-    /////////////  SETTING INFO //////////////////////
-    function Profile(){
+    //-------------------------------------  SETTING INFO -----------------------------------------------------
+    function Profile($username){
+        // get data 
+        $kq = $this->MemberModel->CurrentMember($username);
         $this->view("masterHome", [
             "page" => "settinguser",
+            "profile"=>$kq,
+            // "username"=>$username
         ]);
     }
-    function Password(){
+    function Password($username){
+        // get data 
+        $kq = $this->MemberModel->CurrentMember($username);
         $this->view("masterHome", [
-            "page" => "settingpass"
+            "page" => "settingpass",
+            "profile"=>$kq,
+            // "username"=>$username
             ]);
     }
-    public function UpdateInfo($username){   
+    function UpdateInfo($username){   
         if(isset($_POST['submit'])){
             $username = $_POST["username"];           
             $fullname = $_POST["fullname"];           
             $email = $_POST["email"];
             $kq = $this->MemberModel->UpdateInfo($username, $fullname, $email);
+            $profile = $this->MemberModel->CurrentMember($username);
             // echo $fullname;
             $this->view("masterHome", [
                 "page" => "settinguser",
-                "result" => $kq
+                "result" => $kq,
+                "profile" => $profile,
+                // "username"=>$username
             ]);
         }
     }
@@ -132,16 +146,16 @@ class User extends Controller {
             $confirmpass = $_POST["confirm"];
             if($newpass == $confirmpass){
                 $kq = $this->MemberModel->ChangePassword($username, $oldpass, $newpass);
+                $profile = $this->MemberModel->CurrentMember($username);
                 $this->view("masterHome", [
-                    "page"=>"settinguser",
-                    "result" => $kq
+                    "page"=>"settingpass",
+                    "result" => $kq,
+                    "profile" => $profile,
+                    // "username"=>$username
                 ]);
             }
             
-        }
-        
-
+        }    
     }
-
 }
 ?>

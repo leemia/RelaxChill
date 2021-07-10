@@ -14,20 +14,20 @@
 <h1>ADD MUSIC</h1>
     <div class="form-group">
         <label>SongTitle</label>
-        <input type="text" id="songtitle" placeholder ="Enter new song's name" name="songtitle" class="form-control" require>
+        <input type="text" id="songtitle" placeholder ="Enter new song's name" name="songtitle" class="form-control" required>
     </div>
     <div class="form-group">
     <label>SongLink</label>
-        <input type="text" id="songlink" placeholder ="Enter new song's link" name="songlink" class="form-control" require>
+        <input type="text" id="songlink" placeholder ="Enter new song's link" name="songlink" class="form-control" required>
     </div>
     
     <div class="form-group">
     <label>Type</label>
-        <input type="text" id="idtype" placeholder ="Enter new song's type" name="idtype" class="form-control" require>
+        <input type="text" id="idtype" placeholder ="Enter new song's type" name="idtype" class="form-control" required>
     </div>
     <div class="form-group">
     <label>Listens</label>
-        <input type="text" id="listens" placeholder="0" name="listens" class="form-control" require>
+        <input type="text" id="listens" placeholder="0" name="listens" class="form-control" required>
     </div>
     <div class="form-group">
         <button name="submit" type="submit" class="btn btn-success">SAVE</button>

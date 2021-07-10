@@ -33,6 +33,12 @@ class App{
         // echo $url;
         $arr = explode("/", filter_var(trim($url, "/")));
         if(!empty($arr)){    
+            // if($arr[0] == "User" OR $arr[0] == "Admin"){
+            //     //nếu ko tồn tại phiên đăng nhập thì chuyển qua trang login
+            //     if(!isset($_SESSION['login'])){
+            //         $arr[0] = "Login";
+            //     }
+            // }
             if( file_exists("./mvc/controllers/".$arr[0].".php") ){
                 $this->controller = $arr[0];
                 unset($arr[0]);//hủy arr[0], arr[1] để mảng cuối cùng chứa params
