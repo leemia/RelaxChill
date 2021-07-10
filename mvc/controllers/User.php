@@ -20,8 +20,10 @@ class User extends Controller {
 
     }
     //return Home from other pages 
-   static function Home($username){
+   static function Home($username){   
+       
         $kq = $this->MemberModel->CurrentMember($username);
+        //var_dump($kq);
         $song = $this->MusicModel->ourSong();
         $noise = $this->MusicModel->whiteNoise();
         $this->view("masterHome", [
@@ -159,6 +161,34 @@ class User extends Controller {
         }
         
 
+    }
+    public function SearchMusicPlay($username){
+            
+            $column = $_POST["column"];
+            if($column=="song"){
+                 $column=2;
+            }
+            else{
+                 $column=1;
+            }
+            $searchmusic = $_POST["searchmusic"];
+            $kq = $this->MusicModel->SearchMusicPlay($searchmusic,$column);
+            var_dump($kq);
+
+            //ko tìm thấy thì load lại trang và trả về in ra dòng ko tìm thấy
+            $song = $this->MusicModel->ourSong();
+            $noise = $this->MusicModel->whiteNoise();
+            $crmember = $this->MemberModel->CurrentMember($username);
+            $this->view("masterHome", [
+                "page"=>"user",
+                "result"=>$crmember,
+                "semu"=>$kq,
+                "song"=>$song,
+                "noise"=>$noise,
+                "type"=>$column
+            ]);
+            
+        
     }
 
 }

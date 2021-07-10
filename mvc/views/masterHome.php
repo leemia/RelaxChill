@@ -64,6 +64,8 @@
           }
         };
     var playbutton = document.getElementById(a)
+    var logorotate = document.getElementById("logo")
+    logorotate.src='public/assets/img/logo.gif'
     var audio = document.getElementById(b)
     var status = playbutton.getAttribute("src");
     if ((status == "public\\assets\\img\\stop.png")||(status =="public/assets/img/stop.png")){
@@ -112,6 +114,8 @@ $(document).ready(function(){
     });   
 </script>
 
+
+
 <script>
 function showMore() {
   var dot = document.getElementById("dot");
@@ -154,9 +158,9 @@ var slider = document.getElementById("myRange");
 slider.oninput = function() {
  
   var i;
-  for (i = 0; i < 8; i++) {
+  for (i = 0; i < 100; i++) {
     var text = "";
-    text = "myAudio" + i;
+    text = "mySong" + i;
     document.getElementById(text).volume = (this.value)/100;
   }
   
@@ -169,11 +173,11 @@ var slider1 = document.getElementById("myRange1");
 
 slider1.oninput = function() {
  
-  var i;
-  for (i = 8; i < 13; i++) {
-    var text = "";
-    text = "myAudio" + i;
-    document.getElementById(text).volume = (this.value)/100;
+  var i1;
+  for (i1 = 0; i1 < 100; i1++) {
+    var text1 = "";
+    text1 = "myNoise" + i1;
+    document.getElementById(text1).volume = (this.value)/100;
   }
   
  
