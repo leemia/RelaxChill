@@ -20,20 +20,17 @@ if(isset($data["currentpage"])){
             <i class="fas fa-bars"></i>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-                <?php ?>
+            <ul class="topmenu navbar-nav ml-auto" style="font-family: 'Nanum Gothic', sans-serif;">
                 <li class="nav-item mx-0 mx-lg-1">
-                    <div class="dropdown">
-                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger btndd"><?php echo $username;?></a>
-                        <div class="dropdown-content">
-                            <a href="./User/Profile/<?php echo $username;?>">Profile</a>
-                            <a href="./User/LoadDiary/<?php echo $username; ?>/10/1">Diary</a>
-                            <a href="logout.php">Logout</a>
-                        </div>
+                <div class="dropdown">
+                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger btndd"><?php echo $username;?></a>
+                    <div class="dropdown-content">
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="logout.php">Logout</a>
                     </div>
+                </div>      
                 </li>
-                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#about">About</a></li>
-                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#donate">Donate</a></li>
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="./User/Profile/<?php echo $username;?>">Profile</a></li>
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="./User/LoadDiary/<?php echo $username;?>/10/1">Diary</a></li>
                 <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="User/Home/<?php echo $username; ?>">Back</a></li>
             </ul>
         </div>
