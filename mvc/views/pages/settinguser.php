@@ -1,10 +1,10 @@
 <?php
-    $username = $data["username"];
-    $user = [];
-    if (isset($data["profile"])) {
-        $user = json_decode($data["profile"], true);
-        // var_dump($user);
-    }
+$username = $data["username"];
+$user = [];
+if (isset($data["profile"])) {
+    $user = json_decode($data["profile"], true);
+    // var_dump($user);
+}
 ?>
 
 
@@ -12,7 +12,7 @@
 <html lang="en">
 
 <head>
-    <base href="http://localhost:81/demo/">
+    <base href="http://localhost/demo/">
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -36,36 +36,34 @@
 
 <body style=" background: url('assets/img/background.png') no-repeat center center fixed;">
     <!-- Navigation-->
-    
 
-    ?>
-<nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top " id="mainNav">
-<div class="container">
-    <a class="navbar-brand js-scroll-trigger" href="Home">️️<img src="public\assets\img\pagetop.png" alt="logo" title="Logo"></a>
-    <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        Menu
-        <i class="fas fa-bars"></i>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item mx-0 mx-lg-1">
-                <div class="dropdown">
-                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger btndd"><?php echo $username; ?></a>
-                    <div class="dropdown-content">
-                        <a href="./User/Profile/<?php echo $username;?>">Profile</a>
-                        <a href="./User/LoadDiary/<?php echo $username; ?>/10/1">Diary</a>
-                        <a href="logout.php">Logout</a>
-                    </div>
-                </div>
-            </li>
-            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#about">About</a></li>
-            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#donate">Donate</a></li>
-            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="User/Home/<?php echo $username; ?>">Back</a></li>
-        </ul>
-    </div>
-</div>
-</nav>
-    
+    <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top " id="mainNav">
+        <div class="container">
+            <a class="navbar-brand js-scroll-trigger" href="Home">️️<img src="public\assets\img\pagetop.png" alt="logo" title="Logo"></a>
+            <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Menu
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item mx-0 mx-lg-1">
+                        <div class="dropdown">
+                            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger btndd"><?php echo $username; ?></a>
+                            <div class="dropdown-content">
+                                <a href="./User/Profile/<?php echo $username; ?>">Profile</a>
+                                <a href="./User/LoadDiary/<?php echo $username; ?>/10/1">Diary</a>
+                                <a href="logout.php">Logout</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#about">About</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#donate">Donate</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="User/Home/<?php echo $username; ?>">Back</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
     <!-- Masthead -->
     <header class="masthead text-white text-center">
         <div class="container d-flex align-items-center flex-column ">
@@ -101,95 +99,60 @@
                         You can modify your information here!
                     </div>
                     <h3>Personal info</h3>
-                    <?php if (isset($data["result"])) { ?>
-                        <h4 style="text-align: left; text-align: center">
-                            <?php
-                            if ($data["result"] == true) {
-                                echo "Update successfully!";
-                            } else
-                                echo "Update failed!";
-                            ?>
-                        </h4>
-                    <?php
-                    } ?>
+
                     <div class="card overflow-hidden">
                         <div class="row no-gutters row-bordered row-border-light">
                             <div class="col-md-3 pt-0">
                                 <div class="list-group list-group-flush account-settings-links">
-                                    <a class="list-group-item list-group-item-action active" data-toggle="list" href="#account-general">General</a>
-                                    <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-change-password">Change password</a>
+                                    <a class="list-group-item list-group-item-action active" data-toggle="list">General</a>
+
+                                    <!-- <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-change-password">Change password</a> -->
 
                                 </div>
                             </div>
                             <div class="col-md-9">
                                 <div class="tab-content">
-                                    <div class="tab-pane fade active show" id="account-general">
+                                    <div class="tab-pane fade active show">
                                         <hr class="border-light m-0">
                                         <!-- content -->
                                         <form action="User/UpdateInfo/<?php echo $username; ?>" method="POST">
-
+                                            <?php if (isset($data["result"])) { ?>
+                                                <h4 style="text-align: left; text-align: center">
+                                                    <?php
+                                                    if ($data["result"] == true) {
+                                                        echo "Update successfully!";
+                                                    } else
+                                                        echo "Update failed!";
+                                                    ?>
+                                                </h4>
+                                            <?php
+                                            }
+                                            ?>
                                             <div class="card-body">
                                                 <div class="form-group">
                                                     <label class="form-label">Username</label>
-                                                    <input type="text" class="form-control mb-1" name="username" value = "<?php echo $user['username']; ?>" required>
+                                                    <input type="text" class="form-control mb-1" name="username" value="<?php echo $user['username']; ?>" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="form-label">Fullname</label>
-                                                    <input type="text" class="form-control" name="fullname" value = "<?php echo $user['fullname'] ?>" required>
+                                                    <input type="text" class="form-control" name="fullname" value="<?php echo $user['fullname'] ?>" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="form-label">E-mail</label>
-                                                    <input type="text" class="form-control mb-1" name="email" value = "<?php echo $user['email'] ?>" pattern=".+@gmail.com" required>
+                                                    <input type="text" class="form-control mb-1" name="email" value="<?php echo $user['email'] ?>" pattern=".+@gmail.com" required>
                                                 </div>
-
-                                            </div>
-
                                             <div class="text-right mt-3">
                                                 <button name="submit" type="submit" class="btn btn-success">UPDATE</button>
                                                 <a href="./User/Profile/<?php echo $username; ?>" class="btn btn-danger">CANCEL</a>
+                                                <a href="./User/Password/<?php echo $username; ?>" class="btn btn-warning">Change Password &raquo;</a>
 
-                                            </div>
+                                            </div> 
+                                        </div>                                               
                                         </form>
 
                                     </div>
 
-                                    <!------------------------ CHANGE PASSWORD ------------------------------------------>
-                                    <div class="tab-pane fade" id="account-change-password">
-                                        <div class="card-body pb-2">
 
-                                            <form method = "POST" class="form-horizontal" action="User/ChangePassword/<?php echo $username; ?>" role="form">
-                                                <div class="form-group">
-                                                    <label class="form-label">Username</label>
-                                                    <input type="text" class="form-control mb-1" name="username" value = "<?php echo $user['username'] ?>" required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="form-label">Current password</label>
-                                                    <input type="password" placeholder = "Enter your current password..." name="oldpass" class="form-control">
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class="form-label">New password</label>
-                                                    <input type="password" id="myInput" placeholder = "Enter your new password..." name="newpass" class="form-control">
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class="form-label">Confirm new password</label>
-                                                    <input type="password" placeholder = "Confirm your new password..." name="confirm" class="form-control">
-                                                </div>
-
-                                                <input type="checkbox" onclick="myFunction()"> Show Password
-
-                                                <div class="text-right mt-3">
-                                                    <button name="submit_pass" type="submit" class="btn btn-success">UPDATE</button>
-                                                    <a href="./User/Profile/<?php echo $username; ?>" class="btn btn-danger">CANCEL</a>
-                                                </div>
-
-                                            </form>
-
-
-                                        </div>
-                                    </div>
-                                    <!-- -----------------------------end change pass---------------------------------- -->
                                 </div>
                             </div>
                         </div>

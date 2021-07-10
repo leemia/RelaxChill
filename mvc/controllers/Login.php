@@ -1,5 +1,10 @@
 <?php 
+// require_once './mvc/controllers/Admin.php';
+// require_once './mvc/controllers/User.php';
     class Login extends Controller{
+        //trait
+        // use Admin;
+        // use User;
         
         public $MemberModel;
         public $MusicModel;
@@ -39,11 +44,16 @@
                     // var_dump($arr);
                     $_SESSION['useradmin'] = $arr;
                     if($arr['username'] == 'admin'){
+                        // $admin = new Admin();
+                        // $admin->SayHi();
+                        
+                        // Admin::SayHi();
                         $this->view("masterAdmin" ,[
                             "page"=>"adminhome"
                         ]);
                     }
                     else{
+                        // User::Home($Username);
                         $this->view("masterHome" ,[
                             "page"=>"user",
                             "result"=>$kq,
