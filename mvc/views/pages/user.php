@@ -1,5 +1,6 @@
 <?php
 //hứng kết quả truyền qua từ Musicmodel từ Home.php
+$username = $data["username"];
 $arrSongLink = [];
 $arrSongName = [];
 $arrSongId = [];
