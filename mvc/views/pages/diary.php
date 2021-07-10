@@ -134,19 +134,19 @@ if(isset($data["currentpage"])){
                 // nếu current_page > 1 và total_page > 1 mới hiển thị nút prev
                 if($totalPages > 1){
                     if ($currentPage > 1){
-                        echo '<a class = "button" style="margin:0 5px;text-decoration:none;" href = "User/LoadDiary/'.$userID.'/'.$logPerPage.'/'.($currentPage-1).'">Previous</a>'; 
+                        echo '<a class = "button" style="margin:0 5px;text-decoration:none;border:none" href = "User/LoadDiary/'. $username.'/'.$logPerPage.'/'.($currentPage-1).'"><i style="color:#D0B28B" class="fas fa-backward"></i></a>'; 
                     }
                     for($i=1; $i<=$totalPages; $i++){
                         if ($i == $currentPage){
                             echo '<button style="border:none">'.$i.'</button>  ';
                         }
                         else{
-                            echo '<a  class = "button" style="margin:0 5px;text-decoration:none;" href = "User/LoadDiary/'.$userID.'/'.$logPerPage.'/'.$i.'">'.$i .'</a>'; 
+                            echo '<a  class = "button" style="margin:0 5px;text-decoration:none;border:none" href = "User/LoadDiary/'. $username.'/'.$logPerPage.'/'.$i.'">'.$i .'</a>'; 
                         }
                     }
                     // nếu current_page < $total_page và total_page > 1 mới hiển thị nút next
                     if ($currentPage < $totalPages){
-                        echo '<a class = "button" style="margin:0 5px;text-decoration:none;" href = "User/LoadDiary/'.$userID.'/'.$logPerPage.'/'.($currentPage+1).'">Next</a>'; 
+                        echo '<a class = "button" style="margin:0 5px;text-decoration:none;border:none" href = "User/LoadDiary/'. $username.'/'.$logPerPage.'/'.($currentPage+1).'"><i style="color:#D0B28B" class="fas fa-forward"></i></a>'; 
                     }
                 }
                 
