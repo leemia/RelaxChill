@@ -3,7 +3,7 @@ function myPlay(a,b) {
     var audio = document.getElementById(b)
     var status = playbutton.getAttribute("src");
     if ((status == "public\\assets\\img\\stop.png")||(status =="public/assets/img/stop.png")){
-        playbutton.src='../public/assets/img/play.png'
+        playbutton.src='public/assets/img/play.png'
         audio.play();
         audio.loop();
     }
@@ -19,3 +19,4 @@ function myStop(a,b) {
         audio.loop();
     }
 }
+

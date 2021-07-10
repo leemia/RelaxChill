@@ -115,12 +115,15 @@ input[type=password] {
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
-    border: 1px solid black;
+    border: 1px solid #a88a64;
+
     box-sizing: border-box;
     border-radius: 20px;
     background-color: #f0d7c9;
     outline: none;
-    font-family: sans-serif;
+    font-family: 'Nanum Gothic', sans-serif; 
+    color: #a88a64; 
+    
 } 
 
 /* Set a style for all buttons */
@@ -147,6 +150,8 @@ button:hover {
 
 label {
     font-size: 20px;
+    font-family: 'Nanum Gothic', sans-serif; 
+    color: #a88a64"
 }
 h1{
     text-align: center;
