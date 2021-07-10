@@ -43,22 +43,11 @@ if(isset($data["result"])){
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="topmenu navbar-nav ml-auto" style="font-family: 'Nanum Gothic', sans-serif;">
-            <li class="nav-item mx-0 mx-lg-1">
-                    <div class="dropdown">
-                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger btndd"><?php echo $user['username']     ?></a>
-                        <div class="dropdown-content">
-                            <a href="./User/Profile/<?php echo $user['username'];?>">Profile</a>
-                            <a href="./User/LoadDiary/<?php echo $user['username'] ?>/10/1">Diary</a>
-                        </div>
-                    </div>
-                </li>
-                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#about">About</a></li>
-                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#donate">Donate</a></li>
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="User/Home/<?php echo $username; ?>"><?php echo $user['username']; ?></a></li>
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="./User/Profile/<?php echo $user['username'];?>">Profile</a></li>
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="./User/LoadDiary/<?php echo $user['username'] ?>/10/1">Diary</a></li>
                 <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="logout.php">Logout</a></li>
-                <li class="search">
-						<a href="#"> <i class="fas fa-search fa-lg pointer "></i>
-                        </a>
-					</li>
+                <li class="search"><a href="#"> <i class="fas fa-search fa-lg pointer "></i></a></li>
             </ul>
         </div>
     </div>
@@ -94,23 +83,23 @@ if(isset($data["result"])){
     
             </div>
             <li class="li-audio">
-                <p style="margin: 8px 3px 10px; text-align:left;"><button style="background-color: transparent;border: none;float:left; margin-right: 5px " onclick="myPlay('playButton0','myAudio0');myStop('playButton0','myAudio0')"><img id="playButton0" src="public\assets\img\stop.png" alt="Play button" style="width:25px;height:20px;"></button> <?php echo $arrSongName[0] ?></p>
+                <p style="margin: 8px 3px 10px; text-align:left;"><button style="background-color: transparent;border: none;float:left; margin-right: 5px " onclick="myPlay('playButton0','myAudio0', <?php echo $arrSongId[0]  ?>,<?php echo $user['id']; ?>);myStop('playButton0','myAudio0')"><img id="playButton0" src="public\assets\img\stop.png" alt="Play button" style="width:25px;height:20px;"></button> <?php echo $arrSongName[0] ?></p>
                 <audio src="<?php echo $arrSongLink[0] ?>" style='display:none' id="myAudio0" controls  loop></audio>
             </li>
             <li class="li-audio">
-                <p style="margin: 8px 3px 10px; text-align:left;"><button style="background-color: transparent;border: none;float:left; margin-right: 5px " onclick="myPlay('playButton1','myAudio1');myStop('playButton1','myAudio1')"><img id="playButton1" src="public\assets\img\stop.png" alt="Play button" style="width:25px;height:20px;"></button><?php echo $arrSongName[1] ?></p>
+                <p style="margin: 8px 3px 10px; text-align:left;"><button style="background-color: transparent;border: none;float:left; margin-right: 5px " onclick="myPlay('playButton1','myAudio1', <?php echo $arrSongId[1]  ?>, <?php echo $user['id']; ?>);myStop('playButton1','myAudio1')"><img id="playButton1" src="public\assets\img\stop.png" alt="Play button" style="width:25px;height:20px;"></button><?php echo $arrSongName[1] ?></p>
                 <audio src="<?php echo $arrSongLink[1] ?>" style='display:none' id="myAudio1" controls loop></audio>
             </li>
             <li class="li-audio">
-                <p style="margin: 8px 3px 10px; text-align:left;"><button style="background-color: transparent;border: none;float:left; margin-right: 5px" onclick="myPlay('playButton2','myAudio2');myStop('playButton2','myAudio2');"><img id="playButton2" src="public\assets\img\stop.png" alt="Play button" style="width:25px;height:20px;"></button><?php echo $arrSongName[2] ?></p>
+                <p style="margin: 8px 3px 10px; text-align:left;"><button style="background-color: transparent;border: none;float:left; margin-right: 5px" onclick="myPlay('playButton2','myAudio2', , <?php echo $arrSongId[2]  ?>,  <?php echo $user['id']; ?>);myStop('playButton2','myAudio2');"><img id="playButton2" src="public\assets\img\stop.png" alt="Play button" style="width:25px;height:20px;"></button><?php echo $arrSongName[2] ?></p>
                 <audio src="<?php echo $arrSongLink[2] ?>" style='display:none' id="myAudio2" controls loop></audio>
             </li>
             <li class="li-audio">
-                <p style="margin: 8px 3px 10px; text-align:left;"><button style="background-color: transparent;border: none;float:left; margin-right: 5px" onclick="myPlay('playButton3','myAudio3');myStop('playButton3','myAudio3')"><img id="playButton3" src="public\assets\img\stop.png" alt="Play button" style="width:25px;height:20px;"></button><?php echo $arrSongName[3] ?></p>
+                <p style="margin: 8px 3px 10px; text-align:left;"><button style="background-color: transparent;border: none;float:left; margin-right: 5px" onclick="myPlay('playButton3','myAudio3', <?php echo $arrSongId[3]  ?>,  <?php echo $user['id']; ?>);myStop('playButton3','myAudio3')"><img id="playButton3" src="public\assets\img\stop.png" alt="Play button" style="width:25px;height:20px;"></button><?php echo $arrSongName[3] ?></p>
                 <audio src="<?php echo $arrSongLink[3] ?>" style='display:none' id="myAudio3" controls loop></audio>
             </li>
             <li class="li-audio">
-                <p style="margin: 8px 3px 10px; text-align:left;"><button style="background-color: transparent;border: none;float:left; margin-right: 5px" onclick="myPlay('playButton4','myAudio4');myStop('playButton4','myAudio4')"><img id="playButton4" src="public\assets\img\stop.png" alt="Play button" style="width:25px;height:20px;"></button><?php echo $arrSongName[4] ?></p>
+                <p style="margin: 8px 3px 10px; text-align:left;"><button style="background-color: transparent;border: none;float:left; margin-right: 5px" onclick="myPlay('playButton4','myAudio4', <?php echo $arrSongId[4]  ?>, <?php echo $user['id']; ?>);myStop('playButton4','myAudio4')"><img id="playButton4" src="public\assets\img\stop.png" alt="Play button" style="width:25px;height:20px;"></button><?php echo $arrSongName[4] ?></p>
                 <audio src="<?php echo $arrSongLink[4] ?>" style='display:none' id="myAudio4" controls loop></audio>
             </li>
             <span id="dot" >.</span>
@@ -118,15 +107,15 @@ if(isset($data["result"])){
             <span id="more" style ="display:none">
            
             <li class="li-audio">
-                <p style="margin: 8px 3px 10px; text-align:left;"><button style="background-color: transparent;border: none;float:left; margin-right: 5px" onclick="myPlay('playButton5','myAudio5');myStop('playButton5','myAudio5')"><img id="playButton5" src="public\assets\img\stop.png" alt="Play button" style="width:25px;height:20px;"></button><?php echo $arrSongName[5] ?></p>
+                <p style="margin: 8px 3px 10px; text-align:left;"><button style="background-color: transparent;border: none;float:left; margin-right: 5px" onclick="myPlay('playButton5','myAudio5',<?php echo $arrSongId[5]  ?>, <?php echo $user['id']; ?>);myStop('playButton5','myAudio5')"><img id="playButton5" src="public\assets\img\stop.png" alt="Play button" style="width:25px;height:20px;"></button><?php echo $arrSongName[5] ?></p>
                 <audio src="<?php echo $arrSongLink[5] ?>" style='display:none' id="myAudio5" controls loop></audio>
             </li>
             <li class="li-audio">
-                <p style="margin: 8px 3px 10px; text-align:left;"><button style="background-color: transparent;border: none;float:left; margin-right: 5px" onclick="myPlay('playButton6','myAudio6');myStop('playButton6','myAudio6')"><img id="playButton6" src="public\assets\img\stop.png" alt="Play button" style="width:25px;height:20px;"></button><?php echo $arrSongName[6] ?></p>
+                <p style="margin: 8px 3px 10px; text-align:left;"><button style="background-color: transparent;border: none;float:left; margin-right: 5px" onclick="myPlay('playButton6','myAudio6', <?php echo $arrSongId[6]  ?>, <?php echo $user['id']; ?>);myStop('playButton6','myAudio6')"><img id="playButton6" src="public\assets\img\stop.png" alt="Play button" style="width:25px;height:20px;"></button><?php echo $arrSongName[6] ?></p>
                 <audio src="<?php echo $arrSongLink[6] ?>" style='display:none' id="myAudio6" controls loop></audio> 
             </li>
             <li class="li-audio">
-                <p style="margin: 8px 3px 10px; text-align:left;"><button style="background-color: transparent;border: none;float:left; margin-right: 5px" onclick="myPlay('playButton7','myAudio7');myStop('playButton7','myAudio7')"><img id="playButton7" src="public\assets\img\stop.png" alt="Play button" style="width:25px;height:20px;"></button><?php echo $arrSongName[7] ?></p>
+                <p style="margin: 8px 3px 10px; text-align:left;"><button style="background-color: transparent;border: none;float:left; margin-right: 5px" onclick="myPlay('playButton7','myAudio7', <?php echo $arrSongId[7]  ?>, <?php echo $user['id']; ?>);myStop('playButton7','myAudio7')"><img id="playButton7" src="public\assets\img\stop.png" alt="Play button" style="width:25px;height:20px;"></button><?php echo $arrSongName[7] ?></p>
                 <audio src="<?php echo $arrSongLink[7] ?>" style='display:none' id="myAudio7" controls loop></audio>
             </li>
             </span>
@@ -148,47 +137,47 @@ if(isset($data["result"])){
     
             </div>
             <li class="li-audio">
-                <p style="margin: 8px 3px 10px; text-align:left;"><button style="background-color: transparent;border: none;float:left;margin-right: 5px" onclick="myPlay('playButton8','myAudio8');myStop('playButton8','myAudio8');"><img id="playButton8" src="public\assets\img\stop.png" alt="Play button" style="width:20px;height:20px;"></button><?php echo $arrNoiseName[0] ?></p>
+                <p style="margin: 8px 3px 10px; text-align:left;"><button style="background-color: transparent;border: none;float:left;margin-right: 5px" onclick="myPlay('playButton8','myAudio8', <?php echo $arrNoiseId[0] ?>,  <?php echo $user['id']; ?>);myStop('playButton8','myAudio8');"><img id="playButton8" src="public\assets\img\stop.png" alt="Play button" style="width:20px;height:20px;"></button><?php echo $arrNoiseName[0] ?></p>
                 <audio src="<?php echo $arrNoiseLink[0] ?>" style='display:none' id="myAudio8" controls loop></audio>
             </li>
             <li class="li-audio">
-                <p style="margin: 8px 3px 10px; text-align:left;"><button style="background-color: transparent;border: none;float:left;margin-right: 5px" onclick="myPlay('playButton9','myAudio9');myStop('playButton9','myAudio9')"><img id="playButton9" src="public\assets\img\stop.png" alt="Play button" style="width:20px;height:20px;"></button><?php echo $arrNoiseName[1] ?></p>
+                <p style="margin: 8px 3px 10px; text-align:left;"><button style="background-color: transparent;border: none;float:left;margin-right: 5px" onclick="myPlay('playButton9','myAudio9', <?php echo $arrNoiseId[1] ?>,  <?php echo $user['id']; ?>);myStop('playButton9','myAudio9')"><img id="playButton9" src="public\assets\img\stop.png" alt="Play button" style="width:20px;height:20px;"></button><?php echo $arrNoiseName[1] ?></p>
                 <audio src="<?php echo $arrNoiseLink[1] ?>" style='display:none' id="myAudio9" controls loop></audio>
 
             </li>
             <li class="li-audio">
-                <p style="margin: 8px 3px 10px; text-align:left;"><button style="background-color: transparent;border: none;float:left;margin-right: 5px" onclick="myPlay('playButton10','myAudio10');myStop('playButton10','myAudio10')"><img id="playButton10" src="public\assets\img\stop.png" alt="Play button" style="width:20px;height:20px;"></button><?php echo $arrNoiseName[2] ?></p>
+                <p style="margin: 8px 3px 10px; text-align:left;"><button style="background-color: transparent;border: none;float:left;margin-right: 5px" onclick="myPlay('playButton10','myAudio10', <?php echo $arrNoiseId[2] ?>,  <?php echo $user['id']; ?>);myStop('playButton10','myAudio10')"><img id="playButton10" src="public\assets\img\stop.png" alt="Play button" style="width:20px;height:20px;"></button><?php echo $arrNoiseName[2] ?></p>
                 <audio src="<?php echo $arrNoiseLink[2] ?>" style='display:none' id="myAudio10" controls loop></audio>
             </li>
             <li class="li-audio">
-                <p style="margin: 8px 3px 10px; text-align:left;"><button style="background-color: transparent;border: none;float:left;margin-right: 5px" onclick="myPlay('playButton11','myAudio11');myStop('playButton11','myAudio11')"><img id="playButton11" src="public\assets\img\stop.png" alt="Play button" style="width:20px;height:20px;"></button><?php echo $arrNoiseName[3] ?></p>
+                <p style="margin: 8px 3px 10px; text-align:left;"><button style="background-color: transparent;border: none;float:left;margin-right: 5px" onclick="myPlay('playButton11','myAudio11', <?php echo $arrNoiseId[3] ?>,  <?php echo $user['id']; ?>);myStop('playButton11','myAudio11')"><img id="playButton11" src="public\assets\img\stop.png" alt="Play button" style="width:20px;height:20px;"></button><?php echo $arrNoiseName[3] ?></p>
                 <audio src="<?php echo $arrNoiseLink[3] ?>" style='display:none' id="myAudio11" controls loop></audio>
             </li>
             <li class="li-audio">
-                <p style="margin: 8px 3px 10px; text-align:left;"><button style="background-color: transparent;border: none;float:left;margin-right: 5px" onclick="myPlay('playButton12','myAudio12');myStop('playButton12','myAudio12')"><img id="playButton12" src="public\assets\img\stop.png" alt="Play button" style="width:20px;height:20px;"></button><?php echo $arrNoiseName[4] ?></p>
+                <p style="margin: 8px 3px 10px; text-align:left;"><button style="background-color: transparent;border: none;float:left;margin-right: 5px" onclick="myPlay('playButton12','myAudio12', <?php echo $arrNoiseId[4] ?>,  <?php echo $user['id']; ?>);myStop('playButton12','myAudio12')"><img id="playButton12" src="public\assets\img\stop.png" alt="Play button" style="width:20px;height:20px;"></button><?php echo $arrNoiseName[4] ?></p>
                 <audio src="<?php echo $arrNoiseLink[4];?>" style='display:none' id="myAudio12" controls loop></audio>
             </li>
             <span id="dot1" >.</span>
            
            <span id="more1" style ="display:none">
            <li class="li-audio">
-                <p style="margin: 8px 3px 10px; text-align:left;"><button style="background-color: transparent;border: none;float:left;margin-right: 5px" onclick="myPlay('playButton13','myAudio13');myStop('playButton13','myAudio13');"><img id="playButton13" src="public\assets\img\stop.png" alt="Play button" style="width:20px;height:20px;"></button><?php echo $arrNoiseName[5] ?></p>
+                <p style="margin: 8px 3px 10px; text-align:left;"><button style="background-color: transparent;border: none;float:left;margin-right: 5px" onclick="myPlay('playButton13','myAudio13');myStop('playButton13','myAudio13', <?php echo $arrNoiseId[5] ?>,  <?php echo $user['id']; ?>);"><img id="playButton13" src="public\assets\img\stop.png" alt="Play button" style="width:20px;height:20px;"></button><?php echo $arrNoiseName[5] ?></p>
                 <audio src="<?php echo $arrNoiseLink[5] ?>" style='display:none' id="myAudio8" controls loop></audio>
             </li>
             <li class="li-audio">
-                <p style="margin: 8px 3px 10px; text-align:left;"><button style="background-color: transparent;border: none;float:left;margin-right: 5px" onclick="myPlay('playButton14','myAudio14');myStop('playButton14','myAudio14')"><img id="playButton14" src="public\assets\img\stop.png" alt="Play button" style="width:20px;height:20px;"></button><?php echo $arrNoiseName[6] ?></p>
+                <p style="margin: 8px 3px 10px; text-align:left;"><button style="background-color: transparent;border: none;float:left;margin-right: 5px" onclick="myPlay('playButton14','myAudio14');myStop('playButton14','myAudio14', <?php echo $arrNoiseId[6] ?>,  <?php echo $user['id']; ?>)"><img id="playButton14" src="public\assets\img\stop.png" alt="Play button" style="width:20px;height:20px;"></button><?php echo $arrNoiseName[6] ?></p>
                 <audio src="<?php echo $arrNoiseLink[6] ?>" style='display:none' id="myAudio9" controls loop></audio>
             </li>
             <li class="li-audio">
-                <p style="margin: 8px 3px 10px; text-align:left;"><button style="background-color: transparent;border: none;float:left;margin-right: 5px" onclick="myPlay('playButton15','myAudio15');myStop('playButton15','myAudio15')"><img id="playButton15" src="public\assets\img\stop.png" alt="Play button" style="width:20px;height:20px;"></button><?php echo $arrNoiseName[7] ?></p>
+                <p style="margin: 8px 3px 10px; text-align:left;"><button style="background-color: transparent;border: none;float:left;margin-right: 5px" onclick="myPlay('playButton15','myAudio15');myStop('playButton15','myAudio15', <?php echo $arrNoiseId[7] ?>,  <?php echo $user['id']; ?>)"><img id="playButton15" src="public\assets\img\stop.png" alt="Play button" style="width:20px;height:20px;"></button><?php echo $arrNoiseName[7] ?></p>
                 <audio src="<?php echo $arrNoiseLink[7] ?>" style='display:none' id="myAudio10" controls loop></audio>
             </li>
             <li class="li-audio">
-                <p style="margin: 8px 3px 10px; text-align:left;"><button style="background-color: transparent;border: none;float:left;margin-right: 5px" onclick="myPlay('playButton16','myAudio16');myStop('playButton16','myAudio16')"><img id="playButton16" src="public\assets\img\stop.png" alt="Play button" style="width:20px;height:20px;"></button><?php echo $arrNoiseName[8] ?></p>
+                <p style="margin: 8px 3px 10px; text-align:left;"><button style="background-color: transparent;border: none;float:left;margin-right: 5px" onclick="myPlay('playButton16','myAudio16');myStop('playButton16','myAudio16', <?php echo $arrNoiseId[8] ?>,  <?php echo $user['id']; ?>)"><img id="playButton16" src="public\assets\img\stop.png" alt="Play button" style="width:20px;height:20px;"></button><?php echo $arrNoiseName[8] ?></p>
                 <audio src="<?php echo $arrNoiseLink[8] ?>" style='display:none' id="myAudio11" controls loop></audio>
             </li>
             <li class="li-audio">
-                <p style="margin: 8px 3px 10px; text-align:left;"><button style="background-color: transparent;border: none;float:left;margin-right: 5px" onclick="myPlay('playButton17','myAudio17');myStop('playButton17','myAudio17')"><img id="playButton17" src="public\assets\img\stop.png" alt="Play button" style="width:20px;height:20px;"></button><?php echo $arrNoiseName[9] ?></p>
+                <p style="margin: 8px 3px 10px; text-align:left;"><button style="background-color: transparent;border: none;float:left;margin-right: 5px" onclick="myPlay('playButton17','myAudio17');myStop('playButton17','myAudio17', <?php echo $arrNoiseId[9] ?>,  <?php echo $user['id']; ?>)"><img id="playButton17" src="public\assets\img\stop.png" alt="Play button" style="width:20px;height:20px;"></button><?php echo $arrNoiseName[9] ?></p>
                 <audio src="<?php echo $arrNoiseLink[9];?>" style='display:none' id="myAudio12" controls loop></audio>
             </li>
             </span>
