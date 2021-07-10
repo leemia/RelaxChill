@@ -31,58 +31,20 @@ class App{
         $url = $this->getUrl();
         $url =  $this->__route->handleRoute($url);
         // echo $url;
-        //kiểm tra xem các phần tử của arr là folder hay file
         $arr = explode("/", filter_var(trim($url, "/")));
-        // var_dump($arr[0]);
-        // $urlCheck = '';
-        // if(!empty($arr)){
-        //     foreach ($arr as $key=>$item){
-        //         $urlCheck.=$item.'/';
-        //         $fileCheck = rtrim($urlCheck,'/');
-        //         $fileArr = explode('/', $fileCheck);
-        //         $fileArr[count($fileArr)-1] = ucfirst($fileArr[count($fileArr)-1]);
-        //         $fileCheck = implode('/',$fileArr);
-
-        //         if(!empty($arr[$key - 1])){
-        //             unset($arr[$key - 1]);
-        //         }
-                
-        //         if(file_exists("./mvc/controllers/".$fileCheck.".php")){
-        //             $urlCheck = $fileCheck;
-        //             break;
-        //         }
-        //     }
-        // }
-        // print_r($arr);
-
-
-        // $arr = explode("/", filter_var(trim($url, "/")));
-        // print_r($arr);
-
-        
-        // $this->__route->handleRoute();
-        if(!empty($arr)){
+        if(!empty($arr)){    
             if($arr[0] == "User" OR $arr[0] == "Admin"){
+                //nếu ko tồn tại phiên đăng nhập thì chuyển qua trang login
                 if(!isset($_SESSION['useradmin'])){
                     $arr[0] = "Login";
                 }
             }
-            // Controller
             if( file_exists("./mvc/controllers/".$arr[0].".php") ){
                 $this->controller = $arr[0];
                 unset($arr[0]);
             }
         }
-        
-        // if($arr[0] == "User" OR $arr[0] == "Admin"){
-        //     if(!isset($_SESSION['useradmin'])){
-        //         $arr[0] = "Login";
-        //     }
-        // }
-        // if( file_exists("./mvc/controllers/".$arr[0].".php") ){
-        //     $this->controller = $arr[0];
-        //     unset($arr[0]);
-        // }
+
         require_once "./mvc/controllers/". $this->controller .".php";
         $this->controller = new $this->controller;
 
