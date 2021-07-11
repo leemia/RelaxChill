@@ -98,17 +98,19 @@ if(isset($data["noise"])){
                     echo("<span >");    
                         $arrsemuSongLink = [];
                         $arrsemuSongName  = [];
+                        $arrsemuSongId  = [];
                         
                         while($row = mysqli_fetch_array($data["semu"])){
                             // echo $row["songlink"];
                             array_push($arrsemuSongLink, $row["songlink"]);
                             array_push($arrsemuSongName, $row["songtitle"]);
+                            array_push($arrsemuSongId, $row["idmusic"]);
                         }
                         $c = count($arrsemuSongName);
 
                         for ($x = 0; $x < $c; $x++) {
                             echo('<li class='.'"li-audio"'.'>');
-                                $strevPlay='myPlay('.'"playButtonSong'.$x.'",'.'"mySong'.$x.'");myStop('.'"playButtonSong'.$x.'",'.'"mySong'.$x.'")';
+                                $strevPlay='myPlay('.'"playButtonSong'.$x.'",'.'"mySong'.$x.'",'.$arrsemuSongId[$x].','.$userId.');myStop('.'"playButtonSong'.$x.'",'.'"mySong'.$x.'")';
                                 echo('<p style='.'"margin: 8px 3px 10px; text-align:left;"'.'><button style='.'"background-color: transparent;border: none;float:left; margin-right: 5px "'.'onclick='.$strevPlay.'><img id='.'"playButtonSong'.$x.'" src='.'"public\assets\img\stop.png"'.' alt='.'"Play button"'.' style='.'"width:25px;height:20px;"'.'></button>'.$arrsemuSongName[$x].'</p>');
                                 echo('<audio src='.$arrsemuSongLink[$x].' style='.'"display:none"'.' id='.'"mySong'.$x.'" controls loop></audio>');
                             echo("</li>");
@@ -194,27 +196,32 @@ if(isset($data["noise"])){
                     echo('<div class='.'"slider-color"'.' >');
                         echo('<input type='.'"range"'.' min='.'"0"'.' max='.'"100"'.' value='.'"50"'.' class='.'"slider"'.' id='.'"myRange1"'.'>');
                     echo("</div>");
+                    
 
                     echo("<span >");    
                         $arrsemuNoiseLink = [];
                         $arrsemuNoiseName  = [];
+                        $arrsemuNoiseId  = [];
                         
                         while($row = mysqli_fetch_array($data["semu"])){
                             // echo $row["songlink"];
                             array_push($arrsemuNoiseLink, $row["songlink"]);
                             array_push($arrsemuNoiseName, $row["songtitle"]);
+                            array_push($arrsemuNoiseId, $row["idmusic"]);
                         }
                         $c = count($arrsemuNoiseName);
 
                         for ($x = 0; $x < $c; $x++) {
                             echo('<li class='.'"li-audio"'.'>');
-                                $strevPlay='myPlay('.'"playButtonNoise'.$x.'",'.'"myNoise'.$x.'");myStop('.'"playButtonNoise'.$x.'",'.'"myNoise'.$x.'")';
+                                $strevPlay='myPlay('.'"playButtonNoise'.$x.'",'.'"myNoise'.$x.'",'.$arrsemuNoiseId[$x].','.$userId.');myStop('.'"playButtonNoise'.$x.'",'.'"myNoise'.$x.'")';
                                 echo('<p style='.'"margin: 8px 3px 10px; text-align:left;"'.'><button style='.'"background-color: transparent;border: none;float:left; margin-right: 5px "'.'onclick='.$strevPlay.'><img id='.'"playButtonNoise'.$x.'" src='.'"public\assets\img\stop.png"'.' alt='.'"Play button"'.' style='.'"width:25px;height:20px;"'.'></button>'.$arrsemuNoiseName[$x].'</p>');
                                 echo('<audio src='.$arrsemuNoiseLink[$x].' style='.'"display:none"'.' id='.'"myNoise'.$x.'" controls loop></audio>');
                             echo("</li>");
 
                         }
                     echo("</span >");
+
+                    
                 }
 
             ?>
