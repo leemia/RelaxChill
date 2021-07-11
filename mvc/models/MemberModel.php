@@ -1,23 +1,6 @@
 <?php
 class MemberModel extends DB{
 
-    //get current member for method HOME
-    public function CurrentMember($username)
-    {
-        
-        $sql = "SELECT * FROM member WHERE username like '%$username%' and username != 'admin'";
-        //var_dump($data);
-        $row = mysqli_query($this->con, $sql);
-        $data = mysqli_fetch_assoc($row);
-        if (mysqli_num_rows($row) == 0){
-            return false;
-        }
-        else{
-            //var_dump($data);
-            return json_encode($data);
-        }
-    
-    }
     //get all member from database
     public function GetAllMember()
     {
@@ -85,9 +68,6 @@ class MemberModel extends DB{
         if (mysqli_num_rows($row) == 1 ){
              //nếu pass đã mã hóa thì xài hàm password_verify($data['pass'], $Password) để giải mã
             if($Password == $data['pass']){
-                //lưu vào session
-
-                // $_SESSION['user'] = $data;
                 return json_encode($data);
             }
             else {

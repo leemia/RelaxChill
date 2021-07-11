@@ -1,10 +1,12 @@
 <?php
-$username = $data["username"];
-$user = [];
-if (isset($data["profile"])) {
-    $user = json_decode($data["profile"], true);
-    // var_dump($user);
+ if(!isset($_SESSION['login'])){
+    header("location:http://localhost:8080/RelaxChill/Login");
 }
+//tồn tại phiên đăng nhập thì lấy thông tin username, fullname, email => thông tin đã cập nhật sẽ được hiển thị ở lần đăng nhập sau
+$username = $_SESSION['login']["username"];
+$fullname = $_SESSION['login']["fullname"];
+$email = $_SESSION['login']["email"];
+
 ?>
 
 
@@ -12,11 +14,7 @@ if (isset($data["profile"])) {
 <html lang="en">
 
 <head>
-<<<<<<< HEAD
-    <base href="http://localhost:8080/demo/">
-=======
-    <base href="http://localhost/demo/">
->>>>>>> 88085dfc04a7357ee06a1ed16b159ea5c49e875f
+    <base href="http://localhost:8080/RelaxChill/">
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -49,21 +47,19 @@ if (isset($data["profile"])) {
                 <i class="fas fa-bars"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item mx-0 mx-lg-1">
-                        <div class="dropdown">
-                            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger btndd"><?php echo $username; ?></a>
-                            <div class="dropdown-content">
-                                <a href="./User/Profile/<?php echo $username; ?>">Profile</a>
-                                <a href="./User/LoadDiary/<?php echo $username; ?>/10/1">Diary</a>
-                                <a href="logout.php">Logout</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#about">About</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#donate">Donate</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="User/Home/<?php echo $username; ?>">Back</a></li>
-                </ul>
+            <ul class="topmenu navbar-nav ml-auto" style="font-family: 'Nanum Gothic', sans-serif;">
+                <li class="nav-item mx-0 mx-lg-1">
+                <div class="dropdown">
+                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger btndd"><?php echo $username;?></a>
+                    <div class="dropdown-content">
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="./Login/logout">Logout</a>
+                    </div>
+                </div>      
+                </li>
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="./User/Profile/<?php echo $username;?>">Profile</a></li>
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="./User/LoadDiary/<?php echo $username;?>/10/1">Diary</a></li>
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="User/Home/<?php echo $username; ?>">Back</a></li>
+            </ul>
             </div>
         </div>
     </nav>
@@ -135,15 +131,15 @@ if (isset($data["profile"])) {
                                             <div class="card-body">
                                                 <div class="form-group">
                                                     <label class="form-label">Username</label>
-                                                    <input type="text" class="form-control mb-1" name="username" value="<?php echo $user['username']; ?>" required>
+                                                    <input type="text" class="form-control mb-1" name="username" value="<?php echo $username; ?>" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="form-label">Fullname</label>
-                                                    <input type="text" class="form-control" name="fullname" value="<?php echo $user['fullname'] ?>" required>
+                                                    <input type="text" class="form-control" name="fullname" value="<?php echo $fullname; ?>" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="form-label">E-mail</label>
-                                                    <input type="text" class="form-control mb-1" name="email" value="<?php echo $user['email'] ?>" pattern=".+@gmail.com" required>
+                                                    <input type="text" class="form-control mb-1" name="email" value="<?php echo $email; ?>" pattern=".+@gmail.com" required>
                                                 </div>
                                             <div class="text-right mt-3">
                                                 <button name="submit" type="submit" class="btn btn-success">UPDATE</button>

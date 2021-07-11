@@ -1,12 +1,13 @@
+<?php
+    if(!isset($_SESSION['login'])){
+        header("location:http://localhost:8080/RelaxChill/Login");
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-<<<<<<< HEAD
-    <base href="http://localhost:8080/demo/" />
-=======
-    <base href="http://localhost:80/demo/" />
->>>>>>> 88085dfc04a7357ee06a1ed16b159ea5c49e875f
+    <base href="http://localhost:8080/RelaxChill/" />
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -54,8 +55,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="public/admin/js/scripts.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-    <script src="public/admin/assets/demo/chart-area-demo.js"></script>
-    <script src="public/admin/assets/demo/chart-bar-demo.js"></script>
+    <script src="public/admin/assetsRelaxChill/chart-area-demo.js"></script>
+    <script src="public/admin/assetsRelaxChill/chart-bar-demo.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
     <script src="public/admin/js/datatables-simple-demo.js"></script>
 </body>

@@ -1,4 +1,7 @@
 <?php
+    if(!isset($_SESSION['login'])){
+        header("location:http://localhost:8080/RelaxChill/Login");
+    }
  $currentPage = $data["curentpage"];
 //  echo $currentPage;
 //  echo $data["memperpage"];
@@ -87,19 +90,19 @@
                 // echo $totalPages;
                 if( $totalPages > 1){
                     if ($currentPage > 1){
-                        echo '<a class = "button" style="margin:0 5px;text-decoration:none;" href = "Admin/MemberManage/'.$memPerPage.'/'.($currentPage-1).'">Previous</a>'; 
+                        echo '<a class = "button" style="margin:0 5px;text-decoration:none;border:none" href = "Admin/MemberManage/'.$memPerPage.'/'.($currentPage-1).'"><i style="color:#D0B28B" class="fas fa-backward"></i></a>'; 
                     }
                     for($i=1; $i<=$totalPages; $i++){
                         if ($i == $currentPage){
                             echo '<button style="border:none">'.$i.'</button>  ';
                         }
                         else{
-                            echo '<a  class = "button" style="margin:0 5px;text-decoration:none;" href = "Admin/MemberManage/'.$memPerPage.'/'.$i.'">'.$i .'</a>'; 
+                            echo '<a  class = "button" style="margin:0 5px;text-decoration:none;border:none" href = "Admin/MemberManage/'.$memPerPage.'/'.$i.'">'.$i .'</a>'; 
                         }
                     }
                     // nếu current_page < $total_page và total_page > 1 mới hiển thị nút next
                     if ($currentPage < $totalPages){
-                        echo '<a class = "button" style="margin:0 5px;text-decoration:none;" href = "Admin/MemberManage/'.$memPerPage.'/'.($currentPage+1).'">Next</a>'; 
+                        echo '<a class = "button" style="margin:0 5px;text-decoration:none;border:none" href = "Admin/MemberManage/'.$memPerPage.'/'.($currentPage+1).'"><i style="color:#D0B28B" class="fas fa-forward"></i></a>'; 
                     }
                 }
                 

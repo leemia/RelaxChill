@@ -1,5 +1,10 @@
 <?php
 //hứng kết quả truyền qua từ Musicmodel từ Home.php
+if(!isset($_SESSION['login'])){
+    header("location:http://localhost:8080/RelaxChill/Login");
+}
+$username = $_SESSION['login']["username"];
+$userId = $_SESSION['login']["id"];
 $arrSongLink = [];
 $arrSongName = [];
 $arrSongId = [];
@@ -25,11 +30,12 @@ if(isset($data["noise"])){
 // print_r($arrNoiseId);
 // var_dump ($data["result"]);
 //hứng kết quả truyền qua từ Membermodel từ Login.php
-$user = [];
-if(isset($data["result"])){
-    $user = json_decode($data["result"], true);
-    //var_dump($user);    
-}
+// $user = [];
+// if(isset($data["result"])){
+//     $user = json_decode($data["result"], true);
+//     // print_r($user);
+    
+// }
 
 ?>
 <header class="top">
@@ -42,27 +48,16 @@ if(isset($data["result"])){
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="topmenu navbar-nav ml-auto" style="font-family: 'Nanum Gothic', sans-serif;">
-            <li class="nav-item mx-0 mx-lg-1">
-                    <div class="dropdown">
-                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger btndd"><?php echo $user['username']?></a>
-                        <div class="dropdown-content">
-                            <a href="./User/Profile/<?php echo $user['username']?>">Profile</a>
-                            <a href="./User/LoadDiary/<?php echo $user['username']?>/10/1">Diary</a>
-                        </div>
-                    </div>
-                </li>
-                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#about">About</a></li>
-                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#donate">Donate</a></li>
-                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="logout.php">Logout</a></li>
-                <li class="search">
-						<a href="#"> <i class="fas fa-search fa-lg pointer "></i>
-                        </a>
-					</li>
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="User/Home/<?php echo $username; ?>"><?php echo $username; ?></a></li>
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="./User/Profile/<?php echo $username;?>">Profile</a></li>
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="./User/LoadDiary/<?php echo $username; ?>/10/1">Diary</a></li>
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="./Login/logout">Logout</a></li>
+                <li class="search"><a href="#"> <i class="fas fa-search fa-lg pointer "></i></a></li>
             </ul>
         </div>
     </div>
     <div class="search-bar" style="display:none">
-				<form class="d-flex w-100 justify-content-center" action="User/SearchMusicPlay/<?php echo $user['username']; ?>" method="POST">
+				<form class="d-flex w-100 justify-content-center" action="User/SearchMusicPlay" method="POST">
                 <!-- <form class="d-flex w-100 justify-content-center" > -->
 					<input class=" align-self-center search-input form-control searchbar" type="text" name="searchmusic" size="60" placeholder="What are you searching for?">
 					<!-- <a href="#"> <i class="fas fa-search fa-lg pointer "></i> -->
@@ -80,7 +75,8 @@ if(isset($data["result"])){
 <div class="masthead text-white text-center">
     <div class="container d-flex align-items-center flex-column ">
         <!-- Masthead Avatar Image-->
-        <img id = logo class="masthead-avatar mb-5" src="public\assets\img\logo.png" alt="..." width="100" />
+        var reloadLink = "http://localhost:8080/RelaxChill/User/Home/"+"<?php echo($username) ?>"
+        <a><img id = logo class="masthead-avatar mb-5" src="public\assets\img\logo.png" alt="..." width="100" /></a>
 
     </div>
 
@@ -302,21 +298,3 @@ if(isset($data["result"])){
         <iframe src="https://open.spotify.com/embed/playlist/1ZgQtqZj10PHCEJnhWuP26" width="75%" height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
     </div>
 </div>
-<script>
-jQuery(document).ready(function($) {
- // open search
- $('header.top .topmenu li.search').on('click', 'a', function (e) {
- 	$('.search-bar').fadeIn();
- 	$('.topmenu').fadeOut();
- 	e.preventDefault();
- });
- // close search
- $(document).mouseup(function (e) {
- var container = $('.search-bar form');
- if (!container.is(e.target) && container.has(e.target).length === 0) {
- 	$('.search-bar').fadeOut();
- 	$('.topmenu').fadeIn();
- }
- });
- });
-</script>

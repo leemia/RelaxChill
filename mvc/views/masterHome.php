@@ -2,17 +2,13 @@
 <html lang="en">
 
 <head>
-<<<<<<< HEAD
-    <base href="http://localhost:8080/demo/" />
-=======
-    <base href="http://localhost:80/demo/" />
->>>>>>> 88085dfc04a7357ee06a1ed16b159ea5c49e875f
+    <base href="http://localhost:8080/RelaxChill/" />
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Index</title>
+    <title>RelaxChill</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="public/assets/img/favicon.ico" />
     <!-- Font Awesome icons (free version)-->
@@ -72,29 +68,23 @@
         playbutton.src='public/assets/img/play.png'
         audio.play();
         audio.loop();
-        
     }
-        var url = "http://localhost:8080/demo/User/Diary/"+songId+"/"+userId;
+        var url = "http://localhost:8080/RelaxChill/User/Diary/"+songId+"/"+userId;
         // alert(url);
         xhttp.open("GET", url, true);
-        xhttp.send();
-    // window.alert(songId);
-    // window.alert(userId);
-    
-
-    
-    
-}
-function myStop(a,b) {
-    var playbutton = document.getElementById(a)
-    var audio = document.getElementById(b)
-    var status = playbutton.getAttribute("src");
-    if (status == "public/assets/img/play.png"){
-        playbutton.src='public/assets/img/stop.png'
-        audio.pause();
-        audio.loop();
+        xhttp.send();   
     }
-}
+  
+  function myStop(a,b) {
+      var playbutton = document.getElementById(a)
+      var audio = document.getElementById(b)
+      var status = playbutton.getAttribute("src");
+      if (status == "public/assets/img/play.png"){
+          playbutton.src='public/assets/img/stop.png'
+          audio.pause();
+          audio.loop();
+      }
+  }
 </script>
 <script>
  $(document).ready(function(){
@@ -182,6 +172,24 @@ slider1.oninput = function() {
   
  
 }
+</script>
+<script>
+jQuery(document).ready(function($) {
+ // open search
+ $('header.top .topmenu li.search').on('click', 'a', function (e) {
+ 	$('.search-bar').fadeIn();
+ 	$('.topmenu').fadeOut();
+ 	e.preventDefault();
+ });
+ // close search
+ $(document).mouseup(function (e) {
+ var container = $('.search-bar form');
+ if (!container.is(e.target) && container.has(e.target).length === 0) {
+ 	$('.search-bar').fadeOut();
+ 	$('.topmenu').fadeIn();
+ }
+ });
+ });
 </script>
 <!-- <script src="public/js/audio.js"> </script> -->
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>

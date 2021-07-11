@@ -20,15 +20,13 @@ class User extends Controller {
 
     }
     //return Home from other pages 
-   static function Home($username){   
-       
-        $kq = $this->MemberModel->CurrentMember($username);
-        //var_dump($kq);
+    function Home($username){
+        // $kq = $this->MemberModel->CurrentMember($username);
         $song = $this->MusicModel->ourSong();
         $noise = $this->MusicModel->whiteNoise();
         $this->view("masterHome", [
             "page"=>"user",
-            "result"=>$kq,
+            // "result"=>$kq,
             "song"=>$song,
             "noise"=>$noise
         ]);
@@ -54,8 +52,7 @@ class User extends Controller {
             "limitlog"=>$limitlog,
             "alllog" =>$all,
             "logperpage"=>$logPerPage,
-            "currentpage"=>$page,
-            "username"=>$username
+            "currentpage"=>$page
         ]);
     }
     //xóa diary
@@ -84,8 +81,7 @@ class User extends Controller {
                     "page"=>"diary",
                     "logperpage"=>$logPerPage,
                     "currentpage"=>$page,
-                    "result" => $result,
-                    "username"=>$username
+                    "result" => $result
                 ]);
             }
             else{
@@ -96,8 +92,7 @@ class User extends Controller {
                     "limitlog"=>$limitlog,
                     "alllog" =>$kq,
                     "logperpage"=>$logPerPage,
-                    "currentpage"=>$page,
-                    "username"=>$username
+                    "currentpage"=>$page
                 ]);
             }
             
@@ -105,23 +100,14 @@ class User extends Controller {
     }
 
     /////////////  SETTING INFO //////////////////////
-
-    function Profile($username){
-        // get data 
-        $kq = $this->MemberModel->CurrentMember($username);
+    function Profile(){
         $this->view("masterHome", [
             "page" => "settinguser",
-            "profile"=>$kq,
-            "username"=>$username
         ]);
     }
-    function Password($username){
-        // get data 
-        $kq = $this->MemberModel->CurrentMember($username);
+    function Password(){
         $this->view("masterHome", [
-            "page" => "settingpass",
-            "profile"=>$kq,
-            "username"=>$username
+            "page" => "settingpass"
             ]);
     }
     public function UpdateInfo($username){   
@@ -130,13 +116,10 @@ class User extends Controller {
             $fullname = $_POST["fullname"];           
             $email = $_POST["email"];
             $kq = $this->MemberModel->UpdateInfo($username, $fullname, $email);
-            $profile = $this->MemberModel->CurrentMember($username);
             // echo $fullname;
             $this->view("masterHome", [
                 "page" => "settinguser",
-                "result" => $kq,
-                "profile" => $profile,
-                "username"=>$username
+                "result" => $kq
             ]);
         }
     }
@@ -149,12 +132,9 @@ class User extends Controller {
             $confirmpass = $_POST["confirm"];
             if($newpass == $confirmpass){
                 $kq = $this->MemberModel->ChangePassword($username, $oldpass, $newpass);
-                $profile = $this->MemberModel->CurrentMember($username);
                 $this->view("masterHome", [
-                    "page"=>"settingpass",
-                    "result" => $kq,
-                    "profile" => $profile,
-                    "username"=>$username
+                    "page"=>"settinguser",
+                    "result" => $kq
                 ]);
             }
             
@@ -162,7 +142,7 @@ class User extends Controller {
         
 
     }
-    public function SearchMusicPlay($username){
+    public function SearchMusicPlay(){
             
             $column = $_POST["column"];
             if($column=="song"){
@@ -178,10 +158,8 @@ class User extends Controller {
             //ko tìm thấy thì load lại trang và trả về in ra dòng ko tìm thấy
             $song = $this->MusicModel->ourSong();
             $noise = $this->MusicModel->whiteNoise();
-            $crmember = $this->MemberModel->CurrentMember($username);
             $this->view("masterHome", [
                 "page"=>"user",
-                "result"=>$crmember,
                 "semu"=>$kq,
                 "song"=>$song,
                 "noise"=>$noise,
