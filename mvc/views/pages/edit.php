@@ -31,8 +31,8 @@
         <input type="text" id="listens" name="listens" class="form-control">
     </div> -->
     <div class="form-group">
-        <button name="submit" type="submit" class="btn btn-success">UPDATE</button>
-        <a href="Admin/MusicManage/10/1" class="btn btn-warning">BACK</a>
+        <button name="submit" type="submit" class="btn butstyle">UPDATE</button>
+        <a href="Admin/MusicManage/10/1" class="btn butstyle">BACK</a>
     </div>
 </form>
 <?php } ?>

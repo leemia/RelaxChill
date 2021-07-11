@@ -74,6 +74,7 @@ if(isset($data["noise"])){
                 <p style="margin: 8px 3px 10px; text-align:left;"><button style="background-color: transparent;border: none;float:left; margin-right: 5px" onclick="myPlay('playButtonSong4','mySong4');myStop('playButtonSong4','myNoise4')"><img id="playButtonSong4" src="public\assets\img\stop.png" alt="Play button" style="width:20px;height:20px;"></button><?php echo $arrSongName[4] ?></p>
                 <audio src="<?php echo $arrSongLink[4] ?>" style='display:none' id="myNoise4" controls loop></audio>
             </li>
+            <p  style ="font-family: 'Caveat', cursive; font-size: 1.5rem; color: #a88a64;"><i class='fas fa-music'></i> Login to hear more song <i class='fas fa-music'></i> </p> 
         </ul>
 
 
@@ -104,6 +105,7 @@ if(isset($data["noise"])){
                 <p style="margin: 8px 3px 10px; text-align:left;"><button style="background-color: transparent;border: none;float:left;margin-right: 5px" onclick="myPlay('playButtonNoise9','myNoise9');myStop('playButtonNoise9','myNoise9')"><img id="playButtonNoise9" src="public\assets\img\stop.png" alt="Play button" style="width:20px;height:20px;"></button><?php echo $arrNoiseName[4] ?></p>
                 <audio src="<?php echo $arrNoiseLink[4];?>" style='display:none' id="myNoise9" controls loop></audio>
             </li>
+            <p  style ="font-family: 'Caveat', cursive; font-size: 1.5rem; color: #a88a64;"><i class='fas fa-music'></i> Login to hear more song <i class='fas fa-music'></i> </p> 
         </ul>
     </div>
 </div>

@@ -1,7 +1,7 @@
 <?php
 //nếu ko tồn tại phiên đăng nhập thì chuyển qua trang login
  if(!isset($_SESSION['login'])){
-    header("location:http://localhost:81/RelaxChill/Login");
+    header("location:http://localhost:880/RelaxChill/Login");
 }
 //tồn tại phiên đăng nhập thì lấy ra username
 $username = $_SESSION['login']["username"];
@@ -11,7 +11,7 @@ $username = $_SESSION['login']["username"];
 <html lang="en">
 
 <head>
-    <base href="http://localhost:81/RelaxChill/">
+    <base href="http://localhost:8080/RelaxChill/">
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -149,9 +149,9 @@ $username = $_SESSION['login']["username"];
                                             <input type="checkbox" onclick="myFunction()"> Show Password
 
                                             <div class="text-right mt-3">
-                                                <a href="./User/Profile/<?php echo $username; ?>" class="btn btn-warning" ><i class="fas fa-caret-left"></i> General</a>
-                                                <button name="submit_pass" type="submit" class="btn btn-success">UPDATE</button>
-                                                <a href="./User/Password/<?php echo $username; ?>" class="btn btn-danger">CANCEL</a> 
+                                                <a href="./User/Profile/<?php echo $username; ?>" class="btn butstyle" ><i class="fas fa-caret-left"></i> General</a>
+                                                <button name="submit_pass" type="submit" class="btn butstyle">UPDATE</button>
+                                                <a href="./User/Password/<?php echo $username; ?>" class="btn butstyle">CANCEL</a> 
                                             </div>
 
                                             </div>

@@ -1,6 +1,6 @@
 <?php 
  if(!isset($_SESSION['login'])){
-    header("location:http://localhost:81/RelaxChill/Login");
+    header("location:http://localhost:8080/RelaxChill/Login");
 }
 //lấy username
 $username = $_SESSION['login']["username"];

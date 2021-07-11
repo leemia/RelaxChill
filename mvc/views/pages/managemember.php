@@ -1,6 +1,6 @@
 <?php
     if(!isset($_SESSION['login'])){
-        header("location:http://localhost:81/RelaxChill/Login");
+        header("location:http://localhost:8080/RelaxChill/Login");
     }
  $currentPage = $data["curentpage"];
 //  echo $currentPage;
@@ -52,7 +52,7 @@
                                 <td><?php echo $row["email"]; ?></td>
                                 <td><?php echo $row["fullname"]; ?></td>
                                 <td>
-                                    <input onclick='DeleteMember(<?php echo $row["id"]; ?>,<?php echo $data["memperpage"]; ?>, <?php echo $currentPage; ?> )' type="submit" value='Delete' class="btn btn-info btn-xs delete_data" />
+                                    <input onclick='DeleteMember(<?php echo $row["id"]; ?>,<?php echo $data["memperpage"]; ?>, <?php echo $currentPage; ?> )' type="submit" value='Delete' class="btn butstyle delete_data" />
                                 </td>
                             </tr>
                     

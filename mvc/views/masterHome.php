@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <base href="http://localhost:81/RelaxChill/" />
+    <base href="http://localhost:8080/RelaxChill/" />
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -16,6 +16,8 @@
     <!-- Google fonts-->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- Core theme CSS (includes Bootstrap)--> 
     <link rel="stylesheet" href="public/css/styles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -29,7 +31,7 @@
 
 </head>
 
-<body style=" background: url('public/assets/img/background.png') no-repeat center center fixed;">
+<body style=" background: url('public/assets/img/test.png') no-repeat center center fixed; background-size: cover">
      <!-- Navigation-->
     <!-- Masthead header-->
     <!-- Music Section-->
@@ -69,7 +71,7 @@
         audio.play();
         audio.loop();
     }
-        var url = "http://localhost:81/RelaxChill/User/Diary/"+songId+"/"+userId;
+        var url = "http://localhost:8080/RelaxChill/User/Diary/"+songId+"/"+userId;
         // alert(url);
         xhttp.open("GET", url, true);
         xhttp.send();   

@@ -1,6 +1,6 @@
 <?php 
     if(!isset($_SESSION['login'])){
-        header("location:http://localhost:81/RelaxChill/Login");
+        header("location:http://localhost:8080/RelaxChill/Login");
     }
 $currentPage = $data["curentpage"];
 ?>
@@ -51,8 +51,8 @@ $currentPage = $data["curentpage"];
                                 <td><?php echo $row["typemusic"]; ?></td>
                                 <td><?php echo $row["listens"]; ?></td> 
                                 <td>
-                                    <a href="Admin/EditMusic/<?php echo $row["idmusic"]; ?>" class="btn btn-danger">Edit</a>
-                                    <input onclick='DeleteMusic(<?php echo $row["idmusic"]; ?>,<?php echo $data["musicperpage"]; ?>, <?php echo $currentPage; ?> )' type="submit" value='Delete' class="btn btn-info btn-xs delete_data" />
+                                    <a href="Admin/EditMusic/<?php echo $row["idmusic"]; ?>" class="btn butstyle">Edit</a>
+                                    <input onclick='DeleteMusic(<?php echo $row["idmusic"]; ?>,<?php echo $data["musicperpage"]; ?>, <?php echo $currentPage; ?> )' type="submit" value='Delete' class="btn butstyle delete_data" />
                                 </td>
                             </tr>
 

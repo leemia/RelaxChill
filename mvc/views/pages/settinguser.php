@@ -1,6 +1,6 @@
 <?php
  if(!isset($_SESSION['login'])){
-    header("location:http://localhost:81/RelaxChill/Login");
+    header("location:http://localhost:8080/RelaxChill/Login");
 }
 //tồn tại phiên đăng nhập thì lấy thông tin username, fullname, email => thông tin đã cập nhật sẽ được hiển thị ở lần đăng nhập sau
 $username = $_SESSION['login']["username"];
@@ -14,7 +14,7 @@ $email = $_SESSION['login']["email"];
 <html lang="en">
 
 <head>
-    <base href="http://localhost:81/RelaxChill/">
+    <base href="http://localhost:8080/RelaxChill/">
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -142,9 +142,9 @@ $email = $_SESSION['login']["email"];
                                                     <input type="text" class="form-control mb-1" name="email" value="<?php echo $email; ?>" pattern=".+@gmail.com" required>
                                                 </div>
                                             <div class="text-right mt-3">
-                                                <button name="submit" type="submit" class="btn btn-success">UPDATE</button>
-                                                <a href="./User/Profile/<?php echo $username; ?>" class="btn btn-danger">CANCEL</a>
-                                                <a href="./User/Password/<?php echo $username; ?>" class="btn btn-warning">Change Password <i class="fas fa-caret-right"></i></a>
+                                                <button name="submit" type="submit" class="btn butstyle">UPDATE</button>
+                                                <a href="./User/Profile/<?php echo $username; ?>" class="btn butstyle">CANCEL</a>
+                                                <a href="./User/Password/<?php echo $username; ?>" class="btn butstyle">Change Password <i class="fas fa-caret-right"></i></a>
 
                                             </div> 
                                         </div>                                               

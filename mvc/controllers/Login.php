@@ -65,7 +65,7 @@ require_once './mvc/controllers/User.php';
             unset($_SESSION['login']);
             //xóa hết tất cả các session
             session_destroy();
-            header('location: http://localhost:81/RelaxChill/Home');
+            header('location: http://localhost:8080/RelaxChill/Home');
         }
         //FORGOT PASSWORD
         public function ForgotPassword(){
