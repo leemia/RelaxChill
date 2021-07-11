@@ -15,7 +15,7 @@ if (isset($data['result'])) {
 <?php } ?>
 </p>
 
-<form action="./Login/DangNhap" method="post">
+<form action="./Login" method="post">
 
     <div class="container">
         <label><b>Username</b></label>
