@@ -42,6 +42,12 @@ class MusicModel extends DB{
         // echo $sql;
         return mysqli_query($this->con, $sql);
     }
+    public function SearchMusicPlay($searchmusic,$column){
+        $sql = "SELECT * FROM music WHERE songlink LIKE '%$searchmusic%' AND idtype = $column";
+        // echo $sql;
+        return mysqli_query($this->con, $sql);
+    }
+    
     public function LimitSearchMusic($searchmusic,$column,$musicPerPage, $page){
         $start = ($page-1)*$musicPerPage;
         $sql = "SELECT * FROM music 
@@ -51,6 +57,8 @@ class MusicModel extends DB{
                 ORDER BY idmusic ASC LIMIT $start,$musicPerPage";
         return mysqli_query($this->con, $sql);
     }
+
+    
     // chưa có insert ở đâyđợi t tí nó lag quá ok
     //add music
     public function InsertNewMusic($songtitle, $songlink, $idtype, $listens){

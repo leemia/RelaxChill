@@ -82,28 +82,28 @@ class Admin extends Controller{
             // echo $searchmusic;
             // echo $column;
             $kq = $this->MusicModel->SearchMusic($searchmusic,$column);
-            // var_dump($kq);
+            //var_dump($kq);
             // //ko tìm thấy thì load lại trang và trả về in ra dòng ko tìm thấy
-            if($kq == false){
-                $result = "Not found!!!";
-                // echo $kq;
-                $this->view("masterAdmin", [
-                    "page"=>"managemusic",
-                    "curentpage"=>$page,
-                    "musicperpage" => $musicPerPage,
-                    "result" => $result
-                ]);
-            }
-            else{
-                $limitmusic = $this->MusicModel->LimitSearchMusic($searchmusic,$column,$musicPerPage, $page);
-                $this->view("masterAdmin", [
-                    "page"=>"managemusic",
-                    "allmusic"=>$kq,
-                    "limitmusic" => $limitmusic,
-                    "curentpage"=>$page,
-                    "musicperpage" => $musicPerPage
-                ]);
-            }
+            // if($kq == false){
+            //     $result = "Not found!!!";
+            //     // echo $kq;
+            //     $this->view("masterAdmin", [
+            //         "page"=>"managemusic",
+            //         "curentpage"=>$page,
+            //         "musicperpage" => $musicPerPage,
+            //         "result" => $result
+            //     ]);
+            // }
+            // else{
+            //     $limitmusic = $this->MusicModel->LimitSearchMusic($searchmusic,$column,$musicPerPage, $page);
+            //     $this->view("masterAdmin", [
+            //         "page"=>"managemusic",
+            //         "allmusic"=>$kq,
+            //         "limitmusic" => $limitmusic,
+            //         "curentpage"=>$page,
+            //         "musicperpage" => $musicPerPage
+            //     ]);
+            // }
             
         }
     }

@@ -2532,7 +2532,7 @@ textarea.form-control {
 @media (prefers-reduced-motion: reduce) {
   .fa-search, button {
     cursor: pointer;
-    color: red;}
+    color: #B7AFA4;}
 }
 .fa-search,
 button {
@@ -10444,6 +10444,20 @@ form .row:first-child .floating-label-form-group {
   float: right;
 }
 
+.clmn {
+  border-radius: 8px;
+  background-color: #e6ccabc5; 
+  border: none;
+  color: white;
+  padding: 5px 5px;
+  margin-left: 2px;
+  font-family: 'Caveat', cursive;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  
+}
 
 .rbtn {
   border-radius: 8px;

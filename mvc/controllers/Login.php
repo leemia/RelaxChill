@@ -53,7 +53,7 @@
                         ]);
                     }
                     else{
-                        // User::Home($Username);
+                        //User::Home($Username);
                         $this->view("masterHome" ,[
                             "page"=>"user",
                             "result"=>$kq,

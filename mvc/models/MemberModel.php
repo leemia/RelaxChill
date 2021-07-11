@@ -4,14 +4,16 @@ class MemberModel extends DB{
     //get current member for method HOME
     public function CurrentMember($username)
     {
-    
+        
         $sql = "SELECT * FROM member WHERE username like '%$username%' and username != 'admin'";
+        //var_dump($data);
         $row = mysqli_query($this->con, $sql);
         $data = mysqli_fetch_assoc($row);
         if (mysqli_num_rows($row) == 0){
             return false;
         }
         else{
+            //var_dump($data);
             return json_encode($data);
         }
     
