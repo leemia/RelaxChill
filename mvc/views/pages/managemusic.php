@@ -1,6 +1,6 @@
 <?php 
     if(!isset($_SESSION['login'])){
-        header("location:http://localhost:8080/RelaxChill/Login");
+        header("location:http://localhost/RelaxChill/Login");
     }
 $currentPage = $data["curentpage"];
 ?>

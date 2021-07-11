@@ -57,23 +57,17 @@ require_once './mvc/controllers/User.php';
             }
            
         }
-        /**
-         * logout
-         */
+        // LOUGOUT
         function logout(){
             //hủy session theo tên
             unset($_SESSION['login']);
             //xóa hết tất cả các session
             session_destroy();
-            header('location: http://localhost:8080/RelaxChill/Home');
+            header('location: http://localhost/RelaxChill/Home');
         }
+
         //FORGOT PASSWORD
         public function ForgotPassword(){
-            $this->view("masterHome", [
-                "page"=>"forgot",
-            ]);
-        }
-        public function Reset(){
             // get data nguoi nhap
             if (isset($_POST["btnReset"]) ){
                 $username = $_POST["username"];
@@ -84,19 +78,19 @@ require_once './mvc/controllers/User.php';
                  $this->view("masterHome", [
                             "page"=>"forgot",
                             "result"=>$kq
-                        ]);
-                
+                        ]); 
+            }
+            else
+            {
+                $this->view("masterHome", [
+                    "page"=>"forgot",
+                ]);
             }
 
         }
 
         //REGISTER
         public function Register(){
-            $this->view("masterHome", [
-                "page"=>"register",
-            ]);
-        }
-        public function DangKi(){
             // get data 
             if (isset($_POST["btnResgister"]) ){
                 $username = $_POST["username"];
@@ -112,8 +106,12 @@ require_once './mvc/controllers/User.php';
                 $this->view("masterHome" ,[
                     "page"=>"register",
                     "result"=>$kq
+                ]);    
+            }
+            else{
+                $this->view("masterHome", [
+                    "page"=>"register",
                 ]);
-               
             }
             
         }

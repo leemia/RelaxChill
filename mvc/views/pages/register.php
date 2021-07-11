@@ -20,7 +20,7 @@
             
 
 
-<form action="./Login/DangKi" method="post">
+<form action="./Login/Register" method="post">
     <h1>Sign up</h1>
 
     <div class="container">

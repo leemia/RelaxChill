@@ -95,6 +95,20 @@ class MemberModel extends DB{
         } 
         // return json_encode(echo);
     }
+    public function CheckUser($user){
+        $sql = "SELECT id FROM member WHERE username = '$user' ";
+        $row = mysqli_query($this->con, $sql);
+        //kiểm tra user trùng
+        if (mysqli_num_rows($row) > 0 ){
+            // $result = true;
+            echo "";
+        }
+        else {
+            // $result = false;
+            echo " Not modify your username!!!";
+        } 
+        // return json_encode(echo);
+    }
     //forgot
     public function CheckMail($username, $email){
         $qr = "SELECT * FROM member WHERE  username = '$username' and email = '$email'";

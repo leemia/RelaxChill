@@ -15,16 +15,16 @@
     <h1>EDIT MUSIC</h1>
     <div class="form-group">
         <label>SongTitle</label>
-        <input type="text" id="songtitle" name="songtitle" value = "<?php echo $row["songtitle"]; ?>" class="form-control" require>
+        <input type="text" id="songtitle" name="songtitle" value = "<?php echo $row["songtitle"]; ?>" class="form-control" required>
     </div>
     <div class="form-group">
     <label>SongLink</label>
-        <input type="text" id="songlink" name="songlink" value = "<?php echo $row["songlink"]; ?>" class="form-control" require>
+        <input type="text" id="songlink" name="songlink" value = "<?php echo $row["songlink"]; ?>" class="form-control" required>
     </div>
     
     <div class="form-group">
     <label>Type</label>
-        <input type="text" id="idtype" name="idtype" value = "<?php echo $row["idtype"]; ?>" class="form-control" require>
+        <input type="text" id="idtype" name="idtype" value = "<?php echo $row["idtype"]; ?>" class="form-control" required>
     </div>
     <!-- <div class="form-group">
     <label>Listens</label>

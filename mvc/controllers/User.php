@@ -99,7 +99,7 @@ class User extends Controller {
         }
     }
 
-    /////////////  SETTING INFO //////////////////////
+    //-------------------------------- SETTING INFO --------------------------------
     function Profile(){
         $this->view("masterHome", [
             "page" => "settinguser",
@@ -133,7 +133,7 @@ class User extends Controller {
             if($newpass == $confirmpass){
                 $kq = $this->MemberModel->ChangePassword($username, $oldpass, $newpass);
                 $this->view("masterHome", [
-                    "page"=>"settinguser",
+                    "page"=>"settingpass",
                     "result" => $kq
                 ]);
             }
@@ -153,7 +153,7 @@ class User extends Controller {
             }
             $searchmusic = $_POST["searchmusic"];
             $kq = $this->MusicModel->SearchMusicPlay($searchmusic,$column);
-            var_dump($kq);
+            // var_dump($kq);
 
             //ko tìm thấy thì load lại trang và trả về in ra dòng ko tìm thấy
             $song = $this->MusicModel->ourSong();

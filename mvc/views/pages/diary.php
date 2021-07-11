@@ -1,6 +1,6 @@
 <?php 
  if(!isset($_SESSION['login'])){
-    header("location:http://localhost:8080/RelaxChill/Login");
+    header("location:http://localhost/RelaxChill/Login");
 }
 //lấy username
 $username = $_SESSION['login']["username"];
@@ -16,7 +16,7 @@ if(isset($data["currentpage"])){
 <!-- <link href="public/admin/css/stylesadmin.css" rel="stylesheet" /> -->
 <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top " id="mainNav">
     <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="Home">️️<img src="public\assets\img\pagetop.png" alt="logo" title="Logo"></a>
+        <a class="navbar-brand js-scroll-trigger" href="User/Home/<?php echo $username; ?>">️️<img src="public\assets\img\pagetop.png" alt="logo" title="Logo"></a>
         <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             Menu
             <i class="fas fa-bars"></i>

@@ -1,7 +1,7 @@
 <?php
 //nếu ko tồn tại phiên đăng nhập thì chuyển qua trang login
  if(!isset($_SESSION['login'])){
-    header("location:http://localhost:880/RelaxChill/Login");
+    header("location:http://localhost/RelaxChill/Login");
 }
 //tồn tại phiên đăng nhập thì lấy ra username
 $username = $_SESSION['login']["username"];
@@ -11,7 +11,7 @@ $username = $_SESSION['login']["username"];
 <html lang="en">
 
 <head>
-    <base href="http://localhost:8080/RelaxChill/">
+    <base href="http://localhost/RelaxChill/">
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -38,7 +38,7 @@ $username = $_SESSION['login']["username"];
 
     <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top " id="mainNav">
         <div class="container">
-            <a class="navbar-brand js-scroll-trigger" href="Home">️️<img src="public\assets\img\pagetop.png" alt="logo" title="Logo"></a>
+            <a class="navbar-brand js-scroll-trigger" href="User/Home/<?php echo $username; ?>">️️<img src="public\assets\img\pagetop.png" alt="logo" title="Logo"></a>
             <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 Menu
                 <i class="fas fa-bars"></i>
@@ -129,16 +129,17 @@ $username = $_SESSION['login']["username"];
                                             <div class="card-body">
                                             <div class="form-group">
                                                 <label class="form-label">Username</label>
-                                                <input type="text" class="form-control mb-1" name="username" value="<?php echo $username; ?>" required>
+                                                <input type="text" class="form-control mb-1" id="username" name="username" value="<?php echo $username; ?>" required>
+                                                <div id="messageuser"></div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="form-label">Current password</label>
-                                                <input type="password" placeholder="Enter your current password..." name="oldpass" class="form-control">
+                                                <input type="password" placeholder="Enter your current password..." name="oldpass" class="form-control" pattern=".{8,}" required title="8 characters minimum">
                                             </div>
 
                                             <div class="form-group">
                                                 <label class="form-label">New password</label>
-                                                <input type="password" id="myInput" placeholder="Enter your new password..." name="newpass" class="form-control">
+                                                <input type="password" id="myInput" placeholder="Enter your new password..." name="newpass" class="form-control" pattern=".{8,}" required title="8 characters minimum">
                                             </div>
 
                                             <div class="form-group">
@@ -169,6 +170,18 @@ $username = $_SESSION['login']["username"];
         <hr>
         <script type="text/javascript"></script>
         <script src="public/js/login.js"></script>
+        <script>
+            $(document).ready(function() {
+                $("#username").keyup(function() {
+                    var User = $(this).val();
+                    $.post("Ajax/CheckUser", {
+                        user: User
+                    }, function(data) {
+                        $("#messageuser").html(data);
+                    });
+                });
+            })
+        </script>
     </body>
 
 </html>

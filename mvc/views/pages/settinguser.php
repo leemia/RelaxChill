@@ -41,7 +41,7 @@ $email = $_SESSION['login']["email"];
 
     <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top " id="mainNav">
         <div class="container">
-            <a class="navbar-brand js-scroll-trigger" href="Home">️️<img src="public\assets\img\pagetop.png" alt="logo" title="Logo"></a>
+            <a class="navbar-brand js-scroll-trigger" href="User/Home/<?php echo $username; ?>">️️<img src="public\assets\img\pagetop.png" alt="logo" title="Logo"></a>
             <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 Menu
                 <i class="fas fa-bars"></i>
@@ -129,9 +129,10 @@ $email = $_SESSION['login']["email"];
                                             }
                                             ?>
                                             <div class="card-body">
-                                                <div class="form-group">
+                                            <div class="form-group">
                                                     <label class="form-label">Username</label>
-                                                    <input type="text" class="form-control mb-1" name="username" value="<?php echo $username; ?>" required>
+                                                    <input type="text" class="form-control mb-1" id="username" name="username" value="<?php echo $username; ?>" required>
+                                                    <div id="messageuser"></div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="form-label">Fullname</label>
@@ -163,6 +164,18 @@ $email = $_SESSION['login']["email"];
         <hr>
         <script type="text/javascript"></script>
         <script src="public/js/login.js"></script>
+        <script>
+            $(document).ready(function() {
+                $("#username").keyup(function() {
+                    var User = $(this).val();
+                    $.post("Ajax/CheckUser", {
+                        user: User
+                    }, function(data) {
+                        $("#messageuser").html(data);
+                    });
+                });
+            })
+        </script>
     </body>
 
 </html>

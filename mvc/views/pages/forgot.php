@@ -16,7 +16,7 @@
     <?php } ?>
     </p>
 
-    <form action="./Login/Reset" method="post">
+    <form action="./Login/ForgotPassword" method="post">
 
         <div class="container">
             <label><b>Username</b></label>
